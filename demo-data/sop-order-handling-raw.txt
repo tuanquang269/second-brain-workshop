@@ -1,0 +1,13 @@
+(Ghi âm chị Lan kể quy trình xử lý đơn hàng, chưa biên tập — 3 phút)
+
+Ừm, mỗi sáng thì em mở phần mềm bán hàng lúc 8 rưỡi, vào mục đơn mới. Cái nào ở trạng thái "chờ xác nhận" thì em gọi khách nếu đơn trên 1 triệu hoặc địa chỉ ghi không rõ, còn dưới 1 triệu thì xác nhận luôn không gọi. À, đơn thanh toán trước thì không cần gọi, chỉ gọi đơn COD thôi.
+
+Xác nhận xong thì em in phiếu, mỗi phiếu có mã đơn, em đưa xuống kho cho bạn Tú soạn. Tú soạn xong dán mã vận đơn, chụp ảnh gói hàng bỏ vào nhóm Zalo "Kho – Đơn hàng", để lỡ khách bảo thiếu thì có ảnh đối chiếu. Cái này bắt buộc, có lần thiếu ảnh cãi nhau với khách cả buổi.
+
+Rồi 11 giờ shipper Giao Hàng Nhanh tới lấy lần 1, 4 giờ chiều lấy lần 2. Đơn nào tạo sau 3 giờ chiều thì để mai. Trừ đơn nội thành gấp, khách năn nỉ thì em gọi Grab, phí tính vào shop, nhưng phải hỏi anh Minh trước nếu phí trên 50 nghìn.
+
+Đơn hoàn về thì em kiểm ngay hôm nhận, ghi lý do vào bảng Google Sheet "Hoàn hàng", có 4 cột: mã đơn, sản phẩm, lý do khách ghi, tình trạng hàng. Hàng còn nguyên thì nhập lại kho, hàng lỗi thì để riêng kệ B3 chờ nhà cung cấp.
+
+Cuối ngày em đối chiếu số đơn trên phần mềm với số phiếu in, lệch là phải tìm ra ngay chứ để qua ngày là không nhớ. Xong gửi 1 dòng vào nhóm Zalo "Ban điều hành": số đơn, số hoàn, có vấn đề gì không. Nếu hôm đó có đơn trên 5 triệu thì báo riêng anh Minh.
+
+Cái hay quên nhất là kiểm tra tồn kho mã bán chạy, tuần 2 lần thứ Hai với thứ Năm, dưới 20 cái là báo đặt thêm. Chắc vậy đó.

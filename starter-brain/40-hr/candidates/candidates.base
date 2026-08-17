@@ -1,0 +1,66 @@
+filters:
+  and:
+    - 'type == "candidate"'
+    - file.inFolder("40-hr/candidates")
+
+formulas:
+  avg_check: '((s1_integrity + s2_ownership + s3_problem_solving + s4_ai_first + s5_impact_8020) / 5).round(1)'
+
+properties:
+  file.name:
+    displayName: Ứng viên (file)
+  candidate:
+    displayName: Tên
+  role:
+    displayName: Vị trí
+  status:
+    displayName: Giai đoạn
+  avg_score:
+    displayName: "TB /6"
+  recommendation:
+    displayName: Đề xuất
+  s1_integrity:
+    displayName: "1 Chính trực"
+  s2_ownership:
+    displayName: "2 Ownership"
+  s3_problem_solving:
+    displayName: "3 Giải quyết"
+  s4_ai_first:
+    displayName: "4 AI"
+  s5_impact_8020:
+    displayName: "5 Impact"
+  red_flags:
+    displayName: "Cờ đỏ"
+  formula.avg_check:
+    displayName: "Kiểm lại"
+
+views:
+  - type: table
+    name: "🏆 Xếp hạng"
+    filters:
+      and:
+        - 'status == "scored"'
+    sort:
+      - property: avg_score
+        direction: DESC
+    order:
+      - file.name
+      - role
+      - avg_score
+      - recommendation
+      - s1_integrity
+      - s2_ownership
+      - s3_problem_solving
+      - s4_ai_first
+      - s5_impact_8020
+      - red_flags
+  - type: table
+    name: "📥 Sắp phỏng vấn (prep)"
+    filters:
+      and:
+        - 'status == "prep"'
+    order:
+      - file.name
+      - candidate
+      - role
+      - status

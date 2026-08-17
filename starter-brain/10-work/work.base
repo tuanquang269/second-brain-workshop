@@ -1,0 +1,29 @@
+filters:
+  and:
+    - file.inFolder("10-work")
+    - file.ext == "md"
+
+properties:
+  file.name:
+    displayName: Trang
+  title:
+    displayName: Tiêu đề
+  type:
+    displayName: Loại
+  tags:
+    displayName: Tag
+  updated:
+    displayName: Cập nhật
+
+views:
+  - type: table
+    name: "📚 Kiến thức công việc"
+    sort:
+      - property: updated
+        direction: DESC
+    order:
+      - file.name
+      - title
+      - type
+      - tags
+      - updated
