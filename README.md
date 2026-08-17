@@ -1,10 +1,11 @@
-# Bộ não thứ hai với Claude Code — Finding Camp workshop kit
+# Thực chiến Second Brain + AI
+### Để cơ giới hoá tư duy thành quy trình làm việc — Finding Camp workshop kit
 
 Workshop 240' dạy người không kỹ thuật dựng **bộ não thứ hai** (Obsidian vault) và dùng nó với **Claude Code** + Obsidian skills. 80% thực hành trên việc thật; mỗi trạm kết thúc bằng 1 file mở trong Obsidian. Trục: **Distill → Wire → Harness**.
 
 | Thứ | Ở đâu |
 |---|---|
-| Slide (6 slide mốc · bấm **L** để mở mọi file thực hành) | https://tuanquang269.github.io/second-brain-workshop/slides/ |
+| Slide (6 slide mốc · **B** = 10 bài tập · **L** = file thực hành) | https://tuanquang269.github.io/second-brain-workshop/slides/ |
 | Phụ lục prompt (58 slide, chiếu khi cần dòng lệnh) | https://tuanquang269.github.io/second-brain-workshop/slides/full.html |
 | Bộ não mẫu (giải nén → mở bằng Obsidian, `cd` vào → `claude`) | [`starter-brain.zip`](starter-brain.zip) · nguồn `starter-brain/` |
 | Dữ liệu mẫu (2 CV · transcript họp · SOP thô · email đối thủ · ticket) | [`demo-data.zip`](demo-data.zip) · nguồn `demo-data/` |

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bộ não thứ hai với Claude Code — Finding Camp</title>
-<meta name="description" content="6 slide mốc cho workshop 240 phút. Bấm L để mở mọi file thực hành. Prompt chi tiết: full.html">
+<title>Thực chiến Second Brain + AI — Để cơ giới hoá tư duy thành quy trình làm việc</title>
+<meta name="description" content="Workshop 240 phút. 6 slide mốc · B = 10 bài tập (prompt chép được) · L = file thực hành · full.html = mọi dòng lệnh.">
 <style>
 :root{--bg:#0d0c0a;--surface:#161412;--surface2:#1d1a16;--line:#2e2924;--text:#f0e8d8;--dim:#a49b8b;
 --accent:#e08a3c;--accent-dim:rgba(224,138,60,.14);--teal:#5db3a5;--teal-dim:rgba(93,179,165,.16);
@@ -162,8 +162,10 @@ body.notes-open .notes{transform:none}
 .qr a:hover{border-color:var(--accent);color:var(--accent)}
 @media (max-width:900px){.lanes,.loop{grid-template-columns:1fr}.brk,.qr{grid-template-columns:1fr}.step:not(:last-child)::after{display:none}}
 
-/* ---- 6-slide deck: bigger type, fewer objects ---- */
+/* ---- 6-slide deck ---- */
 .slide{padding:7vh 5vw 9vh}
+.slide--title h1{font-size:clamp(38px,5.6vw,92px);line-height:1.04}
+.slide--title .tsub{font-size:clamp(19px,2.3vw,38px);color:var(--accent);line-height:1.2;text-wrap:balance;font-weight:500}
 .slide--ab{align-items:stretch;justify-content:center}
 .ab{display:grid;grid-template-columns:1fr auto 1fr;gap:2vw;align-items:center;flex:1;min-height:0}
 .ab__col{display:flex;flex-direction:column;gap:3vh;min-width:0}
@@ -176,26 +178,20 @@ body.notes-open .notes{transform:none}
 .ab__vs{font-family:var(--mono);font-size:clamp(16px,1.6vw,26px);color:var(--dim);writing-mode:vertical-rl;letter-spacing:.3em;opacity:.6}
 .ab .ed{display:inline-block;min-width:2.6ch;border-bottom:3px dashed var(--dim);outline:none;cursor:text}
 .ab .ed:focus{border-bottom-color:var(--accent);background:var(--accent-dim)}
-/* anatomy diagram */
 .an-host{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
 .an-host svg{width:100%;height:100%;max-height:100%}
-/* 4 blocks */
 .blocks{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4vw;flex:1;min-height:0;align-content:center}
 .blk{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--accent);border-radius:12px;padding:3vh 1.4vw;display:flex;flex-direction:column;gap:1.3vh;min-width:0}
 .blk .clock{font-family:var(--mono);font-size:clamp(13px,1.2vw,20px);color:var(--dim);letter-spacing:.06em}
 .blk h3{font-size:clamp(21px,2.4vw,42px);font-weight:700;line-height:1.1}
 .blk .arrow{font-family:var(--mono);font-size:clamp(12px,1.15vw,19px);color:var(--accent);overflow-wrap:anywhere;line-height:1.4}
-.blk .f{margin-top:auto}
-/* file links */
-a.f{font-family:var(--mono);font-size:clamp(12px,1.1vw,18px);color:var(--teal);text-decoration:none;border-bottom:1px dashed var(--teal);align-self:flex-start;overflow-wrap:anywhere;line-height:1.4}
+a.f{font-family:var(--mono);font-size:clamp(12px,1.1vw,18px);color:var(--teal);text-decoration:none;border-bottom:1px dashed var(--teal);align-self:flex-start;overflow-wrap:anywhere;line-height:1.4;margin-top:auto}
 a.f:hover{color:var(--accent);border-bottom-color:var(--accent)}
-/* lanes */
 .slide--lane3 .lanes{flex:1;align-content:center}
 .slide--lane3 .lane{gap:1.6vh;justify-content:center;border-top:5px solid var(--teal)}
 .slide--lane3 .lane h3{font-size:clamp(25px,2.9vw,50px)}
 .slide--lane3 .lane .who{font-family:var(--mono);font-size:clamp(13px,1.2vw,20px);color:var(--dim);letter-spacing:.08em;text-transform:uppercase}
 .slide--lane3 .lane .out{font-family:var(--mono);font-size:clamp(13px,1.3vw,22px);color:var(--accent);overflow-wrap:anywhere;margin-top:0}
-/* close */
 .close{display:grid;grid-template-columns:3fr 2fr;gap:4vw;align-items:center;flex:1;min-height:0}
 .close .rules{gap:2.6vh}
 .close .rules li{font-size:clamp(19px,2.3vw,40px);padding-left:2em}
@@ -205,53 +201,72 @@ a.f:hover{color:var(--accent);border-bottom-color:var(--accent)}
 .close .dl{display:flex;gap:1vw;justify-content:center;margin-top:1.6vh;flex-wrap:wrap}
 .close .dl a{font-family:var(--mono);font-size:clamp(13px,1.3vw,21px);color:var(--text);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:1vh 1.1vw;background:var(--surface)}
 .close .dl a:hover{border-color:var(--accent);color:var(--accent)}
-/* ---- links drawer (L) ---- */
-.dock{position:fixed;inset:0;background:rgba(8,8,7,.94);z-index:20;display:none;padding:6vh 6vw;overflow:auto}
-body.dock-open .dock{display:block}
-.dock h2{font-size:clamp(22px,2.4vw,40px);font-weight:700;margin-bottom:.6vh}
-.dock .sub{font-family:var(--mono);font-size:clamp(12px,1.2vw,19px);color:var(--dim);margin-bottom:3vh}
+/* ---- drawers ---- */
+.dock{position:fixed;inset:0;background:rgba(8,8,7,.96);z-index:20;display:none;padding:5vh 5vw 8vh;overflow:auto}
+body.dock-open .dock--links{display:block}
+body.ex-open .dock--ex{display:block}
+.dock h2{font-size:clamp(22px,2.4vw,40px);font-weight:700;margin-bottom:.5vh}
+.dock .sub{font-family:var(--mono);font-size:clamp(12px,1.2vw,19px);color:var(--dim);margin-bottom:2.6vh}
 .dock .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2vw 3vw}
 .dock section{display:flex;flex-direction:column;gap:1.2vh}
 .dock h3{font-family:var(--mono);font-size:clamp(12px,1.15vw,18px);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid var(--line);padding-bottom:.8vh}
 .dock a{font-family:var(--mono);font-size:clamp(13px,1.25vw,20px);color:var(--text);text-decoration:none;line-height:1.35;overflow-wrap:anywhere}
 .dock a:hover{color:var(--accent)}
 .dock a span{color:var(--dim);font-family:var(--font);font-size:.85em}
-.dock .x{position:fixed;top:3vh;right:4vw;font-family:var(--mono);font-size:14px;color:var(--dim);border:1px solid var(--line);border-radius:6px;padding:6px 10px;background:var(--surface);cursor:pointer}
-.nav .dockbtn{width:auto;padding:0 10px;font-size:12px;font-family:var(--mono)}
+.dock .x{position:fixed;top:2.4vh;right:3vw;font-family:var(--mono);font-size:14px;color:var(--dim);border:1px solid var(--line);border-radius:6px;padding:6px 10px;background:var(--surface);cursor:pointer;z-index:21}
+.nav .dockbtn,.nav .exbtn{width:auto;padding:0 10px;font-size:12px;font-family:var(--mono)}
+/* exercise cards */
+.exs{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.6vw 1.6vw}
+.ex{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:9px;min-width:0}
+.ex.k{border-left:4px solid var(--accent)}
+.ex.e{border-left:4px solid var(--teal)}
+.ex .hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.ex .id{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--accent)}
+.ex.e .id{color:var(--teal)}
+.ex h4{font-size:18px;font-weight:700;line-height:1.2}
+.ex .lane{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);border:1px solid var(--line);border-radius:10px;padding:2px 8px}
+.ex .in{font-size:14px;color:var(--dim);line-height:1.4}
+.ex .p{position:relative;background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-family:var(--mono);font-size:13px;line-height:1.45;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--text);cursor:copy}
+.ex .p:hover{border-color:var(--accent)}
+.ex .p::after{content:"⧉ chép";position:absolute;top:6px;right:8px;font-size:10.5px;color:var(--dim);letter-spacing:.08em}
+.ex .p.copied::after{content:"✓ đã chép";color:var(--accent)}
+.ex .out{font-family:var(--mono);font-size:13px;color:var(--accent);overflow-wrap:anywhere;line-height:1.4}
+.ex .dc{font-family:var(--mono);font-size:12.5px;color:var(--teal);line-height:1.4}
+.ex a{font-size:12.5px;border-bottom:1px dashed var(--line);align-self:flex-start}
 @media (max-width:900px){.ab,.blocks,.close{grid-template-columns:1fr}.ab__vs{display:none}}
 </style>
 </head>
 <body>
 <main class="deck">
-<section class="slide slide--title" data-block="MỞ ĐẦU" data-clock="0:00" data-notes="Chào 60 giây rồi mở A/B live — không giảng. Chỉ cho cả phòng: bấm L (hoặc nút 📎 Tài liệu) là ra mọi file cần tải.">
-<p class="sub">Finding Camp · 240 phút</p><h1>Bộ não thứ hai<br>với Claude Code</h1><p class="rule">80% thực hành · mỗi trạm = 1 file mở trong Obsidian</p><p class="who">Kevin Kreative · PATI Group</p><p class="who">Bấm <b style="color:var(--accent)">L</b> để mở mọi file thực hành · <a class="f" href="../starter-brain.zip" target="_blank" rel="noopener">starter-brain.zip ↗</a> · <a class="f" href="../demo-data.zip" target="_blank" rel="noopener">demo-data.zip ↗</a></p>
+<section class="slide slide--title" data-block="MỞ ĐẦU" data-clock="0:00" data-notes="Chào 60 giây rồi mở A/B live — không giảng. Chỉ cho cả phòng 2 phím: B = 10 bài tập (prompt bấm là chép), L = mọi file cần tải.">
+<p class="sub">Finding Camp · 240 phút · thực hành trên máy của bạn</p><h1>Thực chiến Second Brain + AI</h1><p class="tsub">Để cơ giới hoá tư duy thành quy trình làm việc</p><p class="rule">80% thời gian là bạn gõ · mỗi trạm về nhà bằng 1 file trong Obsidian</p><p class="who">Kevin Kreative · PATI Group</p><p class="who">Bấm <b style="color:var(--accent)">B</b> = 10 bài tập · <b style="color:var(--accent)">L</b> = file thực hành · <a class="f" href="../starter-brain.zip" target="_blank" rel="noopener">starter-brain.zip ↗</a></p>
 </section>
 
-<section class="slide slide--ab" data-block="WHY" data-clock="0:00–0:20" data-notes="20'. Chạy A/B thật: pane trái ~/demo-empty + prompt 250 từ · pane phải /interview-scorecard prep. Bấm giờ, gõ số vào 2 ô __ ngay trên slide, chạy /cost, rồi Cmd+W cả hai. Fallback: hook-ab.mp4.">
+<section class="slide slide--ab" data-block="WHY" data-clock="0:00–0:20" data-notes="20'. Chạy A/B thật: pane trái ~/demo-empty + prompt 250 từ · pane phải /interview-scorecard prep. Bấm giờ, gõ số vào 2 ô __, chạy /cost, rồi Cmd+W cả hai. Fallback: hook-ab.mp4.">
 <div class="ab"><div class="ab__col"><h3>Chat trần</h3><div class="ab__row"><span class="ab__n">250</span><span class="ab__k">từ phải gõ</span></div><div class="ab__row"><span class="ab__n"><span class="ed" contenteditable="true" spellcheck="false">__</span></span><span class="ab__k">phút tới file dùng được</span></div><div class="ab__row"><span class="ab__n">0</span><span class="ab__k">file còn lại sau Cmd+W</span></div></div><div class="ab__vs">so với</div><div class="ab__col win"><h3>Bộ não</h3><div class="ab__row"><span class="ab__n">7</span><span class="ab__k">từ phải gõ</span></div><div class="ab__row"><span class="ab__n"><span class="ed" contenteditable="true" spellcheck="false">__</span></span><span class="ab__k">phút tới file dùng được</span></div><div class="ab__row"><span class="ab__n">1</span><span class="ab__k">file + 1 skill giữ lại</span></div></div></div><p class="caption">Cùng một việc. Đóng tab: một bên mất, một bên còn.</p>
 </section>
 
-<section class="slide slide--an" data-block="WHAT" data-clock="0:20–0:30" data-notes="10'. Vẽ lại từ sơ đồ @namhethong, đã kiểm chứng: 5 loại trang Wiki = 5 giá trị type: trong SCHEMA.md ✓. Sửa 3 chỗ: (1) 4_Kết quả nằm NGOÀI vault — knowledge in, outputs out; (2) file luật phải tên CLAUDE.md — test 2026-08-17 trên Claude Code 2.1.233: CLAUDE.md nạp, AGENTS.md và AGENT.md KHÔNG nạp; (3) chat web không ghi được file, cần agent chạy local. Thêm mistakes.md = vòng học từ lỗi.">
+<section class="slide slide--an" data-block="WHAT" data-clock="0:20–0:30" data-notes="10'. Vẽ lại từ sơ đồ @namhethong, đã kiểm chứng: 5 loại trang Wiki = 5 giá trị type: trong SCHEMA.md ✓. Sửa 3 chỗ: (1) 4_Kết quả nằm NGOÀI vault — knowledge in, outputs out; (2) file luật phải tên CLAUDE.md — test 2026-08-17 trên Claude Code 2.1.233: CLAUDE.md nạp, AGENTS.md và AGENT.md KHÔNG nạp; (3) chat web không ghi được file, cần agent chạy local. Thêm mistakes.md = học từ lỗi.">
 <div class="an-host"></div><p class="caption">Bốn lớp · ba động từ · sản phẩm ra ngoài não.</p>
 </section>
 
 <section class="slide slide--blocks" data-block="HOW" data-clock="0:30–3:45" data-notes="Nói 60 giây rồi vào việc. Dòng lệnh từng trạm: bấm L → full.html. Nghỉ 1:35–1:45, helper chạy login clinic.">
-<div class="blocks"><div class="blk"><span class="clock">0:30–0:55</span><h3>Cài đặt</h3><span class="arrow">→ CLAUDE.md ≤40 dòng</span><span class="f"><a class="f" href="../pre-work-email.md" target="_blank" rel="noopener">pre-work-email.md ↗</a></span></div><div class="blk"><span class="clock">0:55–1:35</span><h3>Sắp xếp</h3><span class="arrow">→ 10-work/1-&lt;slug&gt;.md</span><span class="f"><a class="f" href="../demo-data/sop-order-handling-raw.txt" target="_blank" rel="noopener">sop-order-handling-raw.txt ↗</a></span></div><div class="blk"><span class="clock">1:45–2:40</span><h3>Sử dụng</h3><span class="arrow">→ 1 file lane của bạn</span><span class="f"><a class="f" href="../demo-data.zip" target="_blank" rel="noopener">demo-data.zip ↗</a></span></div><div class="blk"><span class="clock">2:40–3:45</span><h3>Huấn luyện</h3><span class="arrow">→ .claude/skills/&lt;tên&gt;/SKILL.md</span><span class="f"><a class="f" href="../starter-brain/98-templates/skill-template.md" target="_blank" rel="noopener">skill-template.md ↗</a></span></div></div><p class="caption">Bốn trạm. Mỗi trạm về nhà bằng một file.</p>
+<div class="blocks"><div class="blk"><span class="clock">0:30–0:55</span><h3>Cài đặt</h3><span class="arrow">→ CLAUDE.md ≤40 dòng</span><a class="f" href="../pre-work-email.md" target="_blank" rel="noopener">pre-work-email.md ↗</a></div><div class="blk"><span class="clock">0:55–1:35</span><h3>Sắp xếp</h3><span class="arrow">→ 10-work/1-&lt;slug&gt;.md</span><a class="f" href="../demo-data/sop-order-handling-raw.txt" target="_blank" rel="noopener">sop-order-handling-raw.txt ↗</a></div><div class="blk"><span class="clock">1:45–2:40</span><h3>Sử dụng</h3><span class="arrow">→ 1 file lane của bạn</span><a class="f" href="../demo-data.zip" target="_blank" rel="noopener">demo-data.zip ↗</a></div><div class="blk"><span class="clock">2:40–3:45</span><h3>Huấn luyện</h3><span class="arrow">→ .claude/skills/&lt;tên&gt;/SKILL.md</span><a class="f" href="../starter-brain/98-templates/skill-template.md" target="_blank" rel="noopener">skill-template.md ↗</a></div></div><p class="caption">Bốn trạm. Mỗi trạm về nhà bằng một file.</p>
 </section>
 
-<section class="slide slide--lane3" data-block="SỬ DỤNG" data-clock="1:45–2:40" data-notes="55'. Demo mỗi lane 3' rồi đi vòng. Ai không mang việc thật thì click file mẫu ngay trên slide. Không render video, không gửi mail — dừng ở file .md.">
-<div class="lanes"><div class="lane"><span class="who">tuyển dụng</span><h3>HR</h3><p class="dc">1 CV → câu hỏi + điểm</p><p class="out">→ 40-hr/candidates/&lt;slug&gt;.md</p><a class="f" href="../demo-data/cv-nguyen-van-a.md" target="_blank" rel="noopener">cv-nguyen-van-a.md ↗</a></div><div class="lane"><span class="who">vận hành</span><h3>Ops</h3><p class="dc">transcript họp → quyết định + việc</p><p class="out">→ 96-daily/meeting-&lt;date&gt;.md</p><a class="f" href="../demo-data/meeting-2026-08-10.txt" target="_blank" rel="noopener">meeting-2026-08-10.txt ↗</a></div><div class="lane"><span class="who">marketing</span><h3>Mkt</h3><p class="dc">3 email đối thủ → chiến dịch 3 email</p><p class="out">→ 10-work/email-campaign-&lt;slug&gt;.md</p><a class="f" href="../demo-data/emails/promo-1.txt" target="_blank" rel="noopener">emails/promo-1..3.txt ↗</a></div></div><p class="caption">Chọn một lane. Việc thật của bạn — hoặc file mẫu ở trên.</p>
+<section class="slide slide--lane3" data-block="SỬ DỤNG" data-clock="1:45–2:40" data-notes="55'. 3 lane là mặc định; ai xong sớm mở B chọn thêm bài (E1–E5). Prompt trong B bấm một cái là chép, dán thẳng vào Claude Code. Không render video, không gửi mail — dừng ở file .md.">
+<div class="lanes"><div class="lane"><span class="who">tuyển dụng</span><h3>HR</h3><p class="dc">1 CV → câu hỏi + điểm</p><p class="out">→ 40-hr/candidates/&lt;slug&gt;.md</p><a class="f" href="../demo-data/cv-nguyen-van-a.md" target="_blank" rel="noopener">cv-nguyen-van-a.md ↗</a></div><div class="lane"><span class="who">vận hành</span><h3>Ops</h3><p class="dc">transcript họp → quyết định + việc</p><p class="out">→ 96-daily/meeting-&lt;date&gt;.md</p><a class="f" href="../demo-data/meeting-2026-08-10.txt" target="_blank" rel="noopener">meeting-2026-08-10.txt ↗</a></div><div class="lane"><span class="who">marketing</span><h3>Mkt</h3><p class="dc">3 email đối thủ → chiến dịch 3 email</p><p class="out">→ 10-work/email-campaign-&lt;slug&gt;.md</p><a class="f" href="../demo-data/emails/promo-1.txt" target="_blank" rel="noopener">emails/promo-1..3.txt ↗</a></div></div><p class="caption">Chọn 1 lane để chạy tại lớp — <b style="color:var(--accent)">bấm B</b> để xem cả 10 bài tập.</p>
 </section>
 
-<section class="slide slide--close" data-block="KẾT" data-clock="3:45–4:00" data-notes="15'. Tường kết quả → 3 luật → QR. Zip cũng có trên USB nếu wifi chết. Nhắc: dựng lại CLAUDE.md từ đầu mỗi 2–3 tháng.">
-<div class="close"><ol class="rules"><li><b>Phân vân → inbox.</b></li><li><b>Mỗi ngày 1–2 note.</b> Hệ thống tự lớn.</li><li><b>Mở não mỗi sáng:</b> đọc log 2 phút, chạy 1 skill.</li></ol><div class="side"><div class="qrbox"><figure class="shot"><img src="img/qr-deck.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/qr-deck.png</b><span>QR trỏ tới https://tuanquang269.github.io/second-brain-workshop/</span></figcaption></figure></div><p class="url">tuanquang269.github.io/<br>second-brain-workshop</p><div class="dl"><a href="../starter-brain.zip" target="_blank" rel="noopener">↓ starter-brain.zip</a><a href="../demo-data.zip" target="_blank" rel="noopener">↓ demo-data.zip</a></div></div></div><p class="caption">Quét hoặc bấm: bộ não mẫu, dữ liệu mẫu, deck này.</p>
+<section class="slide slide--close" data-block="KẾT" data-clock="3:45–4:00" data-notes="15'. Tường kết quả → 3 luật → QR. Nhắc mỗi người chọn 1 bài trong B làm thứ Hai. Zip cũng có trên USB nếu wifi chết.">
+<div class="close"><ol class="rules"><li><b>Phân vân → inbox.</b></li><li><b>Mỗi ngày 1–2 note.</b> Hệ thống tự lớn.</li><li><b>Mở não mỗi sáng:</b> đọc log 2 phút, chạy 1 skill.</li></ol><div class="side"><div class="qrbox"><figure class="shot"><img src="img/qr-deck.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/qr-deck.png</b><span>QR trỏ tới https://tuanquang269.github.io/second-brain-workshop/</span></figcaption></figure></div><p class="url">tuanquang269.github.io/<br>second-brain-workshop</p><div class="dl"><a href="../starter-brain.zip" target="_blank" rel="noopener">↓ starter-brain.zip</a><a href="../demo-data.zip" target="_blank" rel="noopener">↓ demo-data.zip</a></div></div></div><p class="caption">Quét hoặc bấm: bộ não mẫu, dữ liệu mẫu, 10 bài tập.</p>
 </section>
 </main>
 <div class="progress"></div>
-<div class="nav"><button data-go="-1" title="Slide trước (←)">‹</button><span class="counter">1 / 6</span><button data-go="1" title="Slide sau (→)">›</button><button class="dockbtn" title="Tài liệu thực hành (L)">📎 Tài liệu</button></div>
-<div class="hints">← → Space · F toàn màn hình · N ghi chú · <b style="color:var(--accent)">L tài liệu</b></div>
+<div class="nav"><button data-go="-1" title="Slide trước (←)">‹</button><span class="counter">1 / 6</span><button data-go="1" title="Slide sau (→)">›</button><button class="exbtn" title="10 bài tập (B)">🎯 Bài tập</button><button class="dockbtn" title="Tài liệu thực hành (L)">📎 Tài liệu</button></div>
+<div class="hints">← → Space · F toàn màn hình · N ghi chú · <b style="color:var(--accent)">B bài tập</b> · <b style="color:var(--accent)">L tài liệu</b></div>
 <aside class="notes"><b>Ghi chú diễn giả</b><p></p></aside>
-<aside class="dock"><button class="x" data-dock-close>ĐÓNG · L</button>
+<aside class="dock dock--links"><button class="x" data-close="dock">ĐÓNG · L</button>
 <h2>Tài liệu thực hành</h2>
 <p class="sub">Click là mở. Mọi file nằm trong repo — dùng được cả khi chiếu offline.</p>
 <div class="cols">
@@ -283,6 +298,21 @@ body.dock-open .dock{display:block}
 <a href="../demo-data/emails/promo-3.txt" target="_blank" rel="noopener">promo-3.txt<br><span>email đối thủ 3 — sau mua</span></a>
 <a href="../demo-data/product-onepager.md" target="_blank" rel="noopener">product-onepager.md<br><span>one-pager sản phẩm</span></a>
 </section>
+</div></aside>
+<aside class="dock dock--ex"><button class="x" data-close="ex">ĐÓNG · B</button>
+<h2>10 bài tập — chọn bài đúng việc của bạn</h2>
+<p class="sub">K = 5 bài chính chạy tại lớp · E = 5 bài thêm khi bạn xong sớm. Bấm vào khối prompt để chép.</p>
+<div class="exs">
+<div class="ex k"><div class="hd"><span class="id">K1</span><h4>Phỏng vấn: câu hỏi + chấm điểm</h4><span class="lane">HR</span></div><p class="in">vào: 1 CV (ẩn tên) + 3 dòng ghi chú sau buổi</p><div class="p" data-copy="/interview-scorecard-lite prep 99-inbox/cv.md role=&lt;vị trí&gt;">/interview-scorecard-lite prep 99-inbox/cv.md role=&lt;vị trí&gt;</div><p class="out">→ 40-hr/candidates/&lt;slug&gt;.md + hàng trong candidates.base</p><p class="dc">✓ 5 điểm 1–6 · câu hỏi tiếng Việt · tự xếp hạng trong Base</p><a href="../demo-data/cv-nguyen-van-a.md" target="_blank" rel="noopener">file mẫu: cv-nguyen-van-a.md ↗</a></div>
+<div class="ex k"><div class="hd"><span class="id">K2</span><h4>Skill video Pixar / len móc / lego</h4><span class="lane">Video</span></div><p class="in">vào: kịch bản 30 giây</p><div class="p" data-copy="Tạo skill my-video-style: từ kịch bản 30s → storyboard 6 cảnh phong cách &lt;len móc&gt;, mỗi cảnh 1 prompt ảnh + 1 prompt chuyển động; chạy thử với kịch bản này.">Tạo skill my-video-style: từ kịch bản 30s → storyboard 6 cảnh phong cách &lt;len móc&gt;, mỗi cảnh 1 prompt ảnh + 1 prompt chuyển động; chạy thử với kịch bản này.</div><p class="out">→ 10-work/video-&lt;slug&gt;-storyboard.md</p><p class="dc">✓ 6 cảnh · mỗi cảnh gọi tên phong cách · không render</p></div>
+<div class="ex k"><div class="hd"><span class="id">K3</span><h4>Xin review trước khi đóng việc</h4><span class="lane">Mọi lane</span></div><p class="in">vào: skill bạn vừa viết</p><div class="p" data-copy="Sửa skill vừa tạo: trước khi ghi file cuối, hiện bản nháp, hỏi &quot;OK / sửa gì?&quot;, chờ trả lời, rồi ghi verdict vào 00.5-log.md. Chạy lại.">Sửa skill vừa tạo: trước khi ghi file cuối, hiện bản nháp, hỏi &quot;OK / sửa gì?&quot;, chờ trả lời, rồi ghi verdict vào 00.5-log.md. Chạy lại.</div><p class="out">→ dòng verdict trong 00.5-log.md</p><p class="dc">✓ Claude thật sự dừng lại hỏi · có dòng log</p><a href="../demo-data/ticket-042.md" target="_blank" rel="noopener">file mẫu: ticket-042.md ↗</a></div>
+<div class="ex k"><div class="hd"><span class="id">K4</span><h4>Họp → tóm tắt → draft email</h4><span class="lane">Ops</span></div><p class="in">vào: transcript hoặc ghi chú cuộc họp</p><div class="p" data-copy="/meeting-summary 99-inbox/meeting.txt">/meeting-summary 99-inbox/meeting.txt</div><p class="out">→ 96-daily/meeting-&lt;date&gt;.md</p><p class="dc">✓ ≥3 việc có người + hạn (không rõ → TBD) · có mục Email draft</p><a href="../demo-data/meeting-2026-08-10.txt" target="_blank" rel="noopener">file mẫu: meeting-2026-08-10.txt ↗</a></div>
+<div class="ex k"><div class="hd"><span class="id">K5</span><h4>Phân tích + tạo chiến dịch email</h4><span class="lane">Mkt</span></div><p class="in">vào: 3 email đối thủ + 1 sản phẩm</p><div class="p" data-copy="Đọc 99-inbox/emails/, phân tích cấu trúc, viết chiến dịch 3 email cho &lt;sản phẩm&gt; vào 10-work/email-campaign-&lt;slug&gt;.md kèm bảng &quot;vì sao&quot;.">Đọc 99-inbox/emails/, phân tích cấu trúc, viết chiến dịch 3 email cho &lt;sản phẩm&gt; vào 10-work/email-campaign-&lt;slug&gt;.md kèm bảng &quot;vì sao&quot;.</div><p class="out">→ 10-work/email-campaign-&lt;slug&gt;.md</p><p class="dc">✓ 3 subject + 3 body + bảng vì sao</p><a href="../demo-data/emails/promo-1.txt" target="_blank" rel="noopener">file mẫu: emails/promo-1..3.txt ↗</a></div>
+<div class="ex e"><div class="hd"><span class="id">E1</span><h4>Ngân hàng câu trả lời khách</h4><span class="lane">CSKH</span></div><p class="in">vào: 20 tin nhắn Zalo/FB dán vào 1 file</p><div class="p" data-copy="Distill 99-inbox/inbox.txt → 10-work/cs-reply-bank.md: 8 intent hay gặp, mỗi intent 1 câu trả lời chuẩn ≤60 từ, kèm luật chuyển cấp.">Distill 99-inbox/inbox.txt → 10-work/cs-reply-bank.md: 8 intent hay gặp, mỗi intent 1 câu trả lời chuẩn ≤60 từ, kèm luật chuyển cấp.</div><p class="out">→ 10-work/cs-reply-bank.md</p><p class="dc">✓ 8 intent · đúng giọng brand · có luật chuyển cấp</p><a href="../demo-data/ticket-042.md" target="_blank" rel="noopener">file mẫu: ticket-042.md ↗</a></div>
+<div class="ex e"><div class="hd"><span class="id">E2</span><h4>Báo cáo tuần từ chat nhóm</h4><span class="lane">Quản lý</span></div><p class="in">vào: export 1 tuần chat nhóm</p><div class="p" data-copy="Đọc 99-inbox/chat-week.txt → 96-daily/weekly-&lt;date&gt;.md: wins, blockers, decisions, 1 việc nên dừng.">Đọc 99-inbox/chat-week.txt → 96-daily/weekly-&lt;date&gt;.md: wins, blockers, decisions, 1 việc nên dừng.</div><p class="out">→ 96-daily/weekly-&lt;date&gt;.md</p><p class="dc">✓ 4 mục · mục &quot;dừng&quot; gọi tên đúng 1 việc</p></div>
+<div class="ex e"><div class="hd"><span class="id">E3</span><h4>SOP từ voice memo</h4><span class="lane">Ops</span></div><p class="in">vào: ghi âm 3 phút kể quy trình → text</p><div class="p" data-copy="Đọc 99-inbox/sop-raw.txt → 10-work/sop-&lt;task&gt;.md: bước đánh số, công cụ dùng, checkpoint, khi nào hỏi ai.">Đọc 99-inbox/sop-raw.txt → 10-work/sop-&lt;task&gt;.md: bước đánh số, công cụ dùng, checkpoint, khi nào hỏi ai.</div><p class="out">→ 10-work/sop-&lt;task&gt;.md</p><p class="dc">✓ ≥6 bước · đồng nghiệp làm theo được, không hỏi lại</p><a href="../demo-data/sop-order-handling-raw.txt" target="_blank" rel="noopener">file mẫu: sop-order-handling-raw.txt ↗</a></div>
+<div class="ex e"><div class="hd"><span class="id">E4</span><h4>Teardown đối thủ</h4><span class="lane">Mkt</span></div><p class="in">vào: 3 URL đối thủ</p><div class="p" data-copy="Với 3 URL này, viết 10-work/competitor-&lt;name&gt;.md: offer, thang giá, hook, proof, và khoảng trống ta lấy được.">Với 3 URL này, viết 10-work/competitor-&lt;name&gt;.md: offer, thang giá, hook, proof, và khoảng trống ta lấy được.</div><p class="out">→ 10-work/competitor-&lt;name&gt;.md</p><p class="dc">✓ mỗi đối thủ 1 dòng &quot;gap&quot; cụ thể · cần wifi</p><a href="../demo-data/product-onepager.md" target="_blank" rel="noopener">file mẫu: product-onepager.md ↗</a></div>
+<div class="ex e"><div class="hd"><span class="id">E5</span><h4>JD + câu hỏi sàng lọc</h4><span class="lane">HR</span></div><p class="in">vào: 5 gạch đầu dòng: vị trí phải làm ra gì</p><div class="p" data-copy="Từ 5 gạch đầu dòng này viết 40-hr/jd-&lt;role&gt;.md ≤1 trang và 40-hr/roles/&lt;role&gt;.md với ≥5 câu hỏi loại trừ.">Từ 5 gạch đầu dòng này viết 40-hr/jd-&lt;role&gt;.md ≤1 trang và 40-hr/roles/&lt;role&gt;.md với ≥5 câu hỏi loại trừ.</div><p class="out">→ 40-hr/jd-&lt;role&gt;.md + 40-hr/roles/&lt;role&gt;.md</p><p class="dc">✓ JD ≤1 trang · ≥5 câu loại trừ gắn với deliverable</p><a href="../demo-data/job-post-marketing-exec.md" target="_blank" rel="noopener">file mẫu: job-post-marketing-exec.md ↗</a></div>
 </div></aside>
 <template id="an-tpl">
 <svg class="an" viewBox="0 0 1600 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bộ não thứ hai: 4 lớp, 3 động từ, sản phẩm ra ngoài não">
@@ -455,13 +485,25 @@ body.dock-open .dock{display:block}
 (function(){var tpl=document.getElementById('an-tpl');document.querySelectorAll('.an-host').forEach(function(h){h.appendChild(tpl.content.cloneNode(true));});})();
 
 (function(){
-  function t(on){document.body.classList.toggle('dock-open', on);}
-  document.querySelector('.dockbtn').addEventListener('click',function(){t(!document.body.classList.contains('dock-open'));});
-  document.querySelector('[data-dock-close]').addEventListener('click',function(){t(false);});
+  function set(cls,on){document.body.classList.toggle(cls,on);}
+  function only(cls){var on=!document.body.classList.contains(cls);set('dock-open',false);set('ex-open',false);set(cls,on);}
+  document.querySelector('.dockbtn').addEventListener('click',function(){only('dock-open');});
+  document.querySelector('.exbtn').addEventListener('click',function(){only('ex-open');});
+  document.querySelectorAll('[data-close]').forEach(function(b){b.addEventListener('click',function(){set('dock-open',false);set('ex-open',false);});});
   document.addEventListener('keydown',function(e){
     if(e.target.isContentEditable||/^(INPUT|TEXTAREA)$/.test(e.target.tagName))return;
-    if(e.key==='l'||e.key==='L'){t(!document.body.classList.contains('dock-open'));}
-    else if(e.key==='Escape'){t(false);}
+    var k=e.key;
+    if(k==='l'||k==='L'){only('dock-open');}
+    else if(k==='b'||k==='B'){only('ex-open');}
+    else if(k==='Escape'){set('dock-open',false);set('ex-open',false);}
+  });
+  document.querySelectorAll('.ex .p').forEach(function(p){
+    p.addEventListener('click',function(){
+      var t=p.getAttribute('data-copy');
+      var done=function(){p.classList.add('copied');setTimeout(function(){p.classList.remove('copied');},1600);};
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,done);}
+      else{var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');}catch(err){}a.remove();done();}
+    });
   });
 })();
 </script>
