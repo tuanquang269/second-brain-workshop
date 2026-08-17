@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bộ não thứ hai với Claude Code — Finding Camp</title>
-<meta name="description" content="Slide deck workshop 240 phút: Distill → Wire → Harness × 4 bậc. Tự chứa, không tải gì từ mạng.">
+<meta name="description" content="6 slide mốc cho workshop 240 phút. Prompt chi tiết: full.html">
 <style>
 :root{--bg:#0d0c0a;--surface:#161412;--surface2:#1d1a16;--line:#2e2924;--text:#f0e8d8;--dim:#a49b8b;
 --accent:#e08a3c;--accent-dim:rgba(224,138,60,.14);--teal:#5db3a5;--teal-dim:rgba(93,179,165,.16);
@@ -161,10 +161,46 @@ body.notes-open .notes{transform:none}
 .qr a{font-family:var(--mono);font-size:clamp(18px,2vw,34px);color:var(--text);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:1.4vh 1.6vw;background:var(--surface);align-self:flex-start}
 .qr a:hover{border-color:var(--accent);color:var(--accent)}
 @media (max-width:900px){.lanes,.loop{grid-template-columns:1fr}.brk,.qr{grid-template-columns:1fr}.step:not(:last-child)::after{display:none}}
+
+/* 6-slide deck: bigger type, fewer objects */
+.slide{padding:8vh 6vw 9vh}
+.slide--ab{align-items:stretch;justify-content:center}
+.ab{display:grid;grid-template-columns:1fr auto 1fr;gap:2vw;align-items:center;flex:1;min-height:0}
+.ab__col{display:flex;flex-direction:column;gap:3.2vh;min-width:0}
+.ab__col h3{font-family:var(--mono);font-size:clamp(15px,1.6vw,26px);letter-spacing:.16em;text-transform:uppercase;color:var(--dim);font-weight:600}
+.ab__col.win h3{color:var(--accent)}
+.ab__row{display:flex;flex-direction:column;gap:.4vh}
+.ab__n{font-family:var(--mono);font-size:clamp(38px,5.4vw,96px);font-weight:700;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.ab__col.win .ab__n{color:var(--accent)}
+.ab__k{font-size:clamp(14px,1.4vw,23px);color:var(--dim)}
+.ab__vs{font-family:var(--mono);font-size:clamp(16px,1.6vw,26px);color:var(--dim);writing-mode:vertical-rl;letter-spacing:.3em;opacity:.6}
+.ab .ed{display:inline-block;min-width:2.6ch;border-bottom:3px dashed var(--dim);outline:none;cursor:text}
+.ab .ed:focus{border-bottom-color:var(--accent);background:var(--accent-dim)}
+/* 4 blocks */
+.blocks{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5vw;flex:1;min-height:0;align-content:center}
+.blk{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--accent);border-radius:12px;padding:3.4vh 1.5vw;display:flex;flex-direction:column;gap:1.6vh;min-width:0}
+.blk .clock{font-family:var(--mono);font-size:clamp(13px,1.25vw,21px);color:var(--dim);letter-spacing:.06em}
+.blk h3{font-size:clamp(22px,2.5vw,44px);font-weight:700;line-height:1.1}
+.blk .arrow{margin-top:auto;font-family:var(--mono);font-size:clamp(13px,1.25vw,21px);color:var(--accent);overflow-wrap:anywhere;line-height:1.4}
+/* lanes, 6-deck variant */
+.slide--lane3 .lanes{flex:1;align-content:center}
+.slide--lane3 .lane{gap:2vh;justify-content:center;border-top:5px solid var(--teal)}
+.slide--lane3 .lane h3{font-size:clamp(26px,3vw,52px)}
+.slide--lane3 .lane .who{font-family:var(--mono);font-size:clamp(13px,1.25vw,21px);color:var(--dim);letter-spacing:.08em;text-transform:uppercase}
+.slide--lane3 .lane .out{font-family:var(--mono);font-size:clamp(14px,1.35vw,23px);color:var(--accent);overflow-wrap:anywhere;margin-top:0}
+/* close */
+.close{display:grid;grid-template-columns:3fr 2fr;gap:4vw;align-items:center;flex:1;min-height:0}
+.close .rules{gap:3vh}
+.close .rules li{font-size:clamp(20px,2.4vw,42px);padding-left:2em}
+.close .qrbox{max-height:44vh}
+.close .url{font-family:var(--mono);font-size:clamp(13px,1.35vw,22px);color:var(--accent);overflow-wrap:anywhere;text-align:center;margin-top:1.6vh;line-height:1.4}
+.close .side{display:flex;flex-direction:column;justify-content:center}
+@media (max-width:900px){.ab,.blocks,.close{grid-template-columns:1fr}.ab__vs{display:none}}
 </style>
 </head>
 <body>
 <template id="dg-tpl">
+
 <svg class="dg" viewBox="0 176 1600 604" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Distill → Wire → Harness × 4 bậc trên nền Obsidian vault">
   <!-- slab -->
   <rect class="slab" x="130" y="712" width="1338" height="58" rx="8"/>
@@ -290,253 +326,36 @@ body.notes-open .notes{transform:none}
   </g>
 </svg>
 
+
 </template>
 <main class="deck">
-<section class="slide slide--title" data-block="MỞ ĐẦU" data-clock="0:00" data-notes="Chào 30 giây. Luật: 80% thực hành, mỗi trạm kết thúc bằng 1 file mở trong Obsidian. Không API key, chỉ subscription.">
-<p class="sub">Finding Camp · workshop 240 phút</p><h1>Bộ não thứ hai<br>với Claude Code</h1><p class="rule">80% thực hành · mỗi trạm = 1 file mở trong Obsidian</p><p class="who">Kevin Kreative · PATI Group</p>
+<section class="slide slide--title" data-block="MỞ ĐẦU" data-clock="0:00" data-notes="Chào 60 giây. Rồi mở ngay A/B live — không giảng. Slide chỉ là mốc; 80% thời gian màn hình là terminal + Obsidian.">
+<p class="sub">Finding Camp · 240 phút</p><h1>Bộ não thứ hai<br>với Claude Code</h1><p class="rule">80% thực hành · mỗi trạm = 1 file mở trong Obsidian</p><p class="who">Kevin Kreative · PATI Group</p>
 </section>
 
-<section class="slide slide--divider" data-block="WHY" data-clock="0:00–0:15" data-notes="Không giảng. Đi thẳng vào A/B live.">
-<span class="big">01</span><h2>Vì sao cần bộ não thứ hai</h2><p>A/B live 5&#x27; · sở hữu kỹ năng 10&#x27;</p>
+<section class="slide slide--ab" data-block="WHY" data-clock="0:00–0:20" data-notes="20'. Chạy A/B thật: pane trái ~/demo-empty + prompt 250 từ · pane phải /interview-scorecard prep. Bấm giờ, gõ số vào 2 ô __ ngay trên slide, chạy /cost, rồi Cmd+W cả hai. Fallback: hook-ab.mp4.">
+<div class="ab"><div class="ab__col"><h3>Chat trần</h3><div class="ab__row"><span class="ab__n">250</span><span class="ab__k">từ phải gõ</span></div><div class="ab__row"><span class="ab__n"><span class="ed" contenteditable="true" spellcheck="false">__</span></span><span class="ab__k">phút tới file dùng được</span></div><div class="ab__row"><span class="ab__n">0</span><span class="ab__k">file còn lại sau Cmd+W</span></div></div><div class="ab__vs">so với</div><div class="ab__col win"><h3>Bộ não</h3><div class="ab__row"><span class="ab__n">7</span><span class="ab__k">từ phải gõ</span></div><div class="ab__row"><span class="ab__n"><span class="ed" contenteditable="true" spellcheck="false">__</span></span><span class="ab__k">phút tới file dùng được</span></div><div class="ab__row"><span class="ab__n">1</span><span class="ab__k">file + 1 skill giữ lại</span></div></div></div><p class="caption">Cùng một việc. Đóng tab: một bên mất, một bên còn.</p>
 </section>
 
-<section class="slide slide--img" data-block="WHY" data-clock="0:00–0:05" data-notes="Chỉ vào ô &#x27;chưa biết&#x27;: đa số ngồi đây hôm nay. 20 giây rồi qua A/B.">
-<figure class="shot"><img src="img/03-outline-notebook.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/03-outline-notebook.png</b><span>Chụp trang giấy outline viết tay (ảnh 2026-08-17). Che phần riêng tư. Thấy rõ ô 20/80.</span></figcaption></figure><p class="caption">Trang giấy outline thật: xuất phát điểm của buổi hôm nay</p>
+<section class="slide slide--dg" data-block="WHAT" data-clock="0:20–0:30" data-notes="10'. Chỉ hình này. Distill = nguồn thô → 1 trang/1 skill. Wire = index + link + skill-index (không index = không tồn tại). Harness = STOP, verdict, mistakes log. Hỏi cả phòng: việc của bạn đang ở bậc mấy?">
+<div class="dg-host"></div><p class="caption">Distill → Wire → Harness. Prompt → Skill → Agent boss → App.</p>
 </section>
 
-<section class="slide slide--img" data-block="WHY" data-clock="0:00–0:05" data-notes="Chạy A/B live, bấm đồng hồ, /cost cả hai. Cmd+W cả hai: trái mất, phải còn file + hàng Base. Kẹt → hook-ab.mp4.">
-<figure class="shot"><img src="img/04-ab-freeze.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/04-ab-freeze.png</b><span>Đóng băng 2 pane ngay lúc gõ xong: trái ~/demo-empty/ + prompt 250 từ; phải vault thật `/interview-scorecard prep cv-demo.pdf`. Đồng hồ hiện. Fallback = hook-ab.mp4.</span></figcaption></figure><p class="caption">Trái: prompt 250 từ. Phải: một dòng <code>/interview-scorecard</code></p>
+<section class="slide slide--blocks" data-block="HOW" data-clock="0:30–3:45" data-notes="Nói 60 giây rồi vào việc. Prompt để gõ: chiếu full.html (phụ lục 58 slide) hoặc đọc từ 26-second-brain-workshop.md §2. Nghỉ 1:35–1:45 — helper chạy login clinic.">
+<div class="blocks"><div class="blk"><span class="clock">0:30–0:55</span><h3>Cài đặt</h3><span class="arrow">→ CLAUDE.md ≤40 dòng</span></div><div class="blk"><span class="clock">0:55–1:35</span><h3>Sắp xếp</h3><span class="arrow">→ 10-work/1-&lt;slug&gt;.md + index</span></div><div class="blk"><span class="clock">1:45–2:40</span><h3>Sử dụng</h3><span class="arrow">→ 1 file lane của bạn</span></div><div class="blk"><span class="clock">2:40–3:45</span><h3>Huấn luyện</h3><span class="arrow">→ .claude/skills/&lt;tên&gt;/SKILL.md</span></div></div><p class="caption">Bốn trạm. Mỗi trạm về nhà bằng một file.</p>
 </section>
 
-<section class="slide slide--board" data-block="WHY" data-clock="0:00–0:05" data-notes="Điền số live vào ô __ (bấm vào ô, gõ). MT-01: 2 lý do — token từ lần 2, sở hữu kỹ năng.">
-<table class="board"><thead><tr><th></th><th>Chat trần</th><th>Bộ não</th></tr></thead><tbody><tr><th scope="row">Từ gõ</th><td class="num">250</td><td class="num win">7</td></tr><tr><th scope="row">Thời gian</th><td class="num"><span class="ed" contenteditable="true" spellcheck="false">__</span></td><td class="num win"><span class="ed" contenteditable="true" spellcheck="false">__</span></td></tr><tr><th scope="row">Chiều đạt (5 chiều)</th><td class="num"><span class="ed" contenteditable="true" spellcheck="false">__</span> / 5</td><td class="num win">5 / 5</td></tr><tr><th scope="row"><code>/cost</code> lần 1</th><td class="num"><span class="ed" contenteditable="true" spellcheck="false">__</span></td><td class="num win"><span class="ed" contenteditable="true" spellcheck="false">__</span></td></tr><tr><th scope="row"><code>/cost</code> lần 2</th><td class="num"><span class="ed" contenteditable="true" spellcheck="false">__</span></td><td class="num win"><span class="ed" contenteditable="true" spellcheck="false">__</span></td></tr><tr><th scope="row">Còn lại sau <code>Cmd+W</code></th><td class="num">— mất</td><td class="num win">file + hàng Base</td></tr></tbody></table><p class="caption">Bảng điểm: cùng kết quả, một bên còn lại file</p>
+<section class="slide slide--lane3" data-block="SỬ DỤNG" data-clock="1:45–2:40" data-notes="55'. Demo mỗi lane 3' bằng clip 60s rồi đi vòng. Xong sớm → thêm 1 việc: cs-reply-bank · weekly-report · sop · competitor · jd. Không render video, không gửi mail — dừng ở file .md.">
+<div class="lanes"><div class="lane"><span class="who">tuyển dụng</span><h3>HR</h3><p class="dc">1 CV → câu hỏi + điểm</p><p class="out">→ 40-hr/candidates/&lt;slug&gt;.md</p></div><div class="lane"><span class="who">vận hành</span><h3>Ops</h3><p class="dc">transcript họp → quyết định + việc</p><p class="out">→ 96-daily/meeting-&lt;date&gt;.md</p></div><div class="lane"><span class="who">marketing</span><h3>Mkt</h3><p class="dc">3 email đối thủ → chiến dịch 3 email</p><p class="out">→ 10-work/email-campaign-&lt;slug&gt;.md</p></div></div><p class="caption">Chọn một lane. Việc thật của bạn, không phải ví dụ.</p>
 </section>
 
-<section class="slide slide--img" data-block="WHY" data-clock="0:00–0:05" data-notes="Đây là thứ còn lại sau khi đóng chat. Chuyển sang &#x27;sở hữu kỹ năng&#x27;.">
-<figure class="shot"><img src="img/06-candidates-tree-base.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/06-candidates-tree-base.png</b><span>Obsidian: cây thư mục 40.1-hiring/candidates/ có file mới + candidates.base có hàng mới đã xếp hạng.</span></figcaption></figure><p class="caption">Kết quả nằm trong vault: file mới + một hàng trong Base</p>
-</section>
-
-<section class="slide slide--img" data-block="WHY" data-clock="0:05–0:15" data-notes="Mindset A: &#x27;AI = chat, đóng tab là mất&#x27;. Hỏi phòng: ai có &gt;100 chat cũ?">
-<figure class="shot"><img src="img/07-chat-sidebar-200.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/07-chat-sidebar-200.png</b><span>Sidebar ChatGPT / Claude.ai cuộn dài, ~200 chat cũ mờ xám. Che tiêu đề nhạy cảm.</span></figcaption></figure><p class="caption">200 cuộc chat xám: đóng tab là mất</p>
-</section>
-
-<section class="slide slide--img" data-block="WHY" data-clock="0:05–0:15" data-notes="Mỗi thư mục = 1 kỹ năng đã đóng gói. Chat xám vs thư mục skill.">
-<figure class="shot"><img src="img/08-skills-finder-129.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/08-skills-finder-129.png</b><span>Finder ~/.claude/skills/ dạng list; thanh trạng thái đếm 129 items.</span></figcaption></figure><p class="caption">129 thư mục skill: mỗi cái chạy lại bằng một dòng</p>
-</section>
-
-<section class="slide slide--img" data-block="WHY" data-clock="0:05–0:15" data-notes="Não to không phải file to. Router nhỏ, chi tiết cách 1 bước. Quay lại ở trạm Router.">
-<figure class="shot"><img src="img/09-context-73k-8k.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/09-context-73k-8k.png</b><span>/context trước và sau ghép cạnh nhau; tô số 73,637 B và 8,656 B.</span></figcaption></figure><p class="caption">CLAUDE.md 73.637 B → 8.656 B: nhỏ mà đủ</p>
-</section>
-
-<section class="slide slide--img" data-block="WHY" data-clock="0:05–0:15" data-notes="Ai cũng bắt đầu từ 3 chấm. Cuối buổi các bạn có ~12.">
-<figure class="shot"><img src="img/10-graph-kevin-vs-3.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/10-graph-kevin-vs-3.png</b><span>Obsidian graph view LLM-Wiki (dày) cạnh graph starter-brain (3 chấm).</span></figcaption></figure><p class="caption">Graph của Kevin hôm nay vs graph ba chấm ngày đầu</p>
-</section>
-
-<section class="slide slide--img" data-block="WHY" data-clock="0:05–0:15" data-notes="Log = nhật ký não. Mỗi dòng distill là một lần não lớn thêm.">
-<figure class="shot"><img src="img/11-log-4-numbers.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/11-log-4-numbers.png</b><span>00.5-log.md với 4 con số tô sáng (số trang · số skill · số dòng log · số mistakes). Kevin chọn số.</span></figcaption></figure><p class="caption">Bốn con số trong <code>00.5-log.md</code>: não lớn lên mỗi ngày</p>
-</section>
-
-<section class="slide slide--statement" data-block="WHY" data-clock="0:05–0:15" data-notes="Kết Why. Nhắc lại 2 lý do (MT-01). Rồi qua What: 1 hình duy nhất.">
-<h2>Skill cộng dồn. Bạn giữ nó.</h2><h2 class="ac">Chỉ subscription. Không API key.</h2>
-</section>
-
-<section class="slide slide--divider" data-block="WHAT" data-clock="0:15–0:25" data-notes="10 phút. Không thêm slide chữ. Hình sáng từng bậc nối.">
-<span class="big">02</span><h2>Ba động từ · bốn bậc</h2><p>một hình duy nhất, sáng 3 lần</p>
-</section>
-
-<section class="slide slide--dg" data-block="WHAT" data-clock="0:15–0:25" data-notes="Đọc từ trái sang: Prompt (mất khi đóng) → Skill (1 dòng) → Agent boss (tự chạy, hỏi khi cần) → App (người khác dùng). Lề trái chi phí giảm, lề phải thứ giữ lại tăng.">
-<div class="dg-host"></div><p class="caption">Distill → Wire → Harness: leo bốn bậc trên nền vault</p>
-</section>
-
-<section class="slide slide--dg" data-block="WHAT" data-clock="0:15–0:25" data-notes="Distill = phễu: transcript/PDF → 1 trang hoặc 1 SKILL.md. Chỉ vào dòng log thật.">
-<div class="dg-host hl-distill"></div><div class="strip"><figure class="shot"><img src="img/15-distill-log-lines.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/15-distill-log-lines.png</b><span>00.5-log.md: 3–4 dòng có chữ &#x27;distill&#x27;, tô sáng.</span></figcaption></figure></div><p class="caption">DISTILL: nguồn thô thành trang; dòng <code>distill</code> trong log</p>
-</section>
-
-<section class="slide slide--dg" data-block="WHAT" data-clock="0:15–0:25" data-notes="Wire = phích cắm. Skill không có trong index = không tồn tại.">
-<div class="dg-host hl-wire"></div><div class="strip"><figure class="shot"><img src="img/16-wire-skills-index.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/16-wire-skills-index.png</b><span>80.7-meta/2-skills-index.md mở trong Obsidian, thấy vài dòng skill.</span></figcaption></figure></div><p class="caption">WIRE: index + wikilink + hook → agent tìm được</p>
-</section>
-
-<section class="slide slide--dg" data-block="WHAT" data-clock="0:15–0:25" data-notes="Harness = dây an toàn. Gate, review-before-close, mistakes log. 3 ghim: HR bậc 3, Video bậc 2, Copy bậc 2 (MT-02).">
-<div class="dg-host hl-harness"></div><div class="strip"><figure class="shot"><img src="img/17-harness-blocked-mistakes.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/17-harness-blocked-mistakes.png</b><span>Terminal dòng BLOCKED của hook cạnh 00.6-mistakes.md.</span></figcaption></figure></div><p class="caption">HARNESS: gate chặn, mistakes ghi lại → giao được</p>
-</section>
-
-<section class="slide slide--divider" data-block="HOW" data-clock="0:25–3:45" data-notes="4 khối. Mỗi khối mở bằng slide &#x27;Gõ dòng này&#x27;. Xong sớm → làm 1 dòng E.">
-<span class="big">03</span><h2>Thực hành 210 phút</h2><p>Cài đặt 0:25 · Sắp xếp 0:50 · Sử dụng 1:40 · Huấn luyện não 2:40</p>
-</section>
-
-<section class="slide slide--type" data-block="CÀI ĐẶT" data-clock="0:25–0:50" data-notes="25&#x27;. Windows: vault ở C:\brain, Git Bash. Kẹt login → helper. /model sonnet cho bài tập. /context 1 lần thôi.">
-<p class="kicker">▶ Gõ dòng này</p><h2>Cài đặt</h2><p class="pre">unzip starter-brain.zip → mở thư mục brain trong Obsidian → Terminal:</p><div class="cmd"><span class="n">1</span>cd ~/brain &amp;&amp; claude --permission-mode acceptEdits</div><div class="cmd"><span class="n">2</span>/hello-brain</div><div class="cmd"><span class="n">3</span>Đọc CLAUDE.md, điền phần &quot;tôi là ai / làm gì&quot;: <span class="var">&lt;tên, vai trò, công ty&gt;</span>. Giữ dưới 40 dòng.</div><div class="cmd"><span class="n">4</span>/context</div><p class="out">→ file đầu ra: <code>99-inbox/hello.md</code> · <code>CLAUDE.md</code></p>
-</section>
-
-<section class="slide slide--img" data-block="CÀI ĐẶT" data-clock="0:25–0:50" data-notes="Chiếu đích trước, rồi làm live. Ai đạt màn hình này = xong bước 1.">
-<figure class="shot"><img src="img/20-setup-target-state.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/20-setup-target-state.png</b><span>Màn hình đích: Obsidian (starter-brain, dark, zoom 150%) bên trái; terminal `claude &gt;` bên phải, ≥18pt.</span></figcaption></figure><p class="caption">Đích: Obsidian bên trái, terminal bên phải</p>
-</section>
-
-<section class="slide slide--img" data-block="CÀI ĐẶT" data-clock="0:25–0:50" data-notes="Giải thích acceptEdits 1 lần: khỏi bấm y. Không giải thích thêm.">
-<figure class="shot"><img src="img/21-three-lines-typed.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/21-three-lines-typed.png</b><span>Terminal sau khi gõ 3 dòng: cd ~/brain &amp;&amp; claude --permission-mode acceptEdits · /hello-brain · prompt CLAUDE.md.</span></figcaption></figure><p class="caption">Ba dòng gõ: vào thư mục, mở claude, chào não</p>
-</section>
-
-<section class="slide slide--img" data-block="CÀI ĐẶT" data-clock="0:25–0:50" data-notes="Không tạo vault mới. Mở thư mục đã unzip.">
-<figure class="shot"><img src="img/22-obsidian-create-vault.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/22-obsidian-create-vault.png</b><span>Dialog Obsidian &#x27;Open folder as vault&#x27; trỏ tới ~/brain (Mac) và C:\brain (Windows nếu có).</span></figcaption></figure><p class="caption">Obsidian: Open folder as vault → chọn <code>brain</code></p>
-</section>
-
-<section class="slide slide--img" data-block="CÀI ĐẶT" data-clock="0:25–0:50" data-notes="MT-03: CLAUDE.md ≤40 dòng, index, log, mistakes = 4 file.">
-<figure class="shot"><img src="img/23-claude-md-12-lines.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/23-claude-md-12-lines.png</b><span>starter-brain/CLAUDE.md mở trong Obsidian, thấy đủ 12 dòng, bật số dòng.</span></figcaption></figure><p class="caption">CLAUDE.md 12 dòng: đủ cho một bộ não mới</p>
-</section>
-
-<section class="slide slide--img" data-block="CÀI ĐẶT" data-clock="0:25–0:50" data-notes="Chạy 1 lần để biết. Sẽ so lại ở trạm Router.">
-<figure class="shot"><img src="img/24-context-fresh-session.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/24-context-fresh-session.png</b><span>/context trong ~/brain phiên mới; statusline hiện context.</span></figcaption></figure><p class="caption"><code>/context</code> phiên mới: xem cái gì đang chiếm chỗ</p>
-</section>
-
-<section class="slide slide--type" data-block="SẮP XẾP · DISTILL" data-clock="0:50–1:05" data-notes="15&#x27;. Luật ≤3 trang. PDF scan 40 trang → demo-data. MT-04.">
-<p class="kicker">▶ Gõ dòng này</p><h2>Sắp xếp · Distill</h2><p class="pre">thả 1 tài liệu thật (≤3 trang) vào 99-inbox/ — không có thì dùng demo-data</p><div class="cmd">Đọc 99-inbox/<span class="var">&lt;file&gt;</span>, distill thành 10-work/1-<span class="var">&lt;slug&gt;</span>.md: frontmatter, 5 ý chính, 3 quyết định, 3 việc cần làm, 2 wikilink tới trang chưa có.</div><p class="out">→ file đầu ra: <code>10-work/1-&lt;slug&gt;.md  (2 link xám = não muốn thêm)</code></p>
-</section>
-
-<section class="slide slide--img" data-block="SẮP XẾP · DISTILL" data-clock="0:50–1:05" data-notes="Số = thứ tự đọc, không phải ID phân loại. starter-brain đánh số y hệt.">
-<figure class="shot"><img src="img/26-kevin-folder-tree.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/26-kevin-folder-tree.png</b><span>Obsidian file explorer LLM-Wiki: 10-foundations/ 20-brands/ 30-creative/ 90-sources/ … số thấy rõ.</span></figcaption></figure><p class="caption">Cây thư mục của Kevin: số là thứ tự đọc</p>
-</section>
-
-<section class="slide slide--img" data-block="SẮP XẾP · DISTILL" data-clock="0:50–1:05" data-notes="Chỉ chiếu, không làm. Ý: đừng mv tay, để tool giữ link.">
-<figure class="shot"><img src="img/27-vault-tool-move.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/27-vault-tool-move.png</b><span>Terminal chạy vault_tool.py move + Obsidian hiện wikilink đã tự đổi theo.</span></figcaption></figure><p class="caption"><code>vault_tool.py</code> move: link tự cập nhật, không gãy</p>
-</section>
-
-<section class="slide slide--type" data-block="SẮP XẾP · WIRE" data-clock="1:05–1:20" data-notes="15&#x27;. Trang không có trong index = não không biết. Base render cần Obsidian mở.">
-<p class="kicker">▶ Gõ dòng này</p><h2>Sắp xếp · Wire</h2><div class="cmd">Thêm trang mới vào 00.4-index.md, ghi 1 dòng &quot;distill&quot; vào 00.5-log.md, mở 10-work/work.base và xác nhận trang xuất hiện.</div><p class="pre">→ mở Graph view (Cmd/Ctrl + P → “Graph view”)</p><p class="out">→ file đầu ra: <code>dòng trong 00.4-index.md</code> · <code>dòng trong 00.5-log.md</code> · <code>1 hàng trong 10-work/work.base</code></p>
-</section>
-
-<section class="slide slide--img" data-block="SẮP XẾP · WIRE" data-clock="1:05–1:20" data-notes="Nhìn phòng: ai đã có graph mới? Giơ tay.">
-<figure class="shot"><img src="img/29-graph-before-after.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/29-graph-before-after.png</b><span>starter-brain graph trước (3 nút) và sau distill + wire (~12 nút), ghép cạnh nhau.</span></figcaption></figure><p class="caption">Graph trước / sau: ba chấm thành mười hai</p>
-</section>
-
-<section class="slide slide--img" data-block="SẮP XẾP · WIRE" data-clock="1:05–1:20" data-notes="Base = bảng tự lọc theo frontmatter. Không cần điền tay.">
-<figure class="shot"><img src="img/30-work-base.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/30-work-base.png</b><span>10-work/work.base render trong Obsidian với hàng mới.</span></figcaption></figure><p class="caption">Base: trang mới tự xuất hiện thành một hàng</p>
-</section>
-
-<section class="slide slide--img" data-block="SẮP XẾP · WIRE" data-clock="1:05–1:20" data-notes="Chỉ chiếu. Ý: máy kiểm luật thay bạn. Bậc harness nhỏ đầu tiên.">
-<figure class="shot"><img src="img/31-lint-green.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/31-lint-green.png</b><span>Terminal python3 80.3-lint_wiki.py … kết quả xanh, 0 lỗi.</span></figcaption></figure><p class="caption">Lint xanh: frontmatter, tag, hai wikilink đều đủ</p>
-</section>
-
-<section class="slide slide--type" data-block="SẮP XẾP · ROUTER" data-clock="1:20–1:30" data-notes="10&#x27;. Nếu trễ: cắt hands-on, chỉ chiếu /context trước/sau + luật ≤30 dòng (−7&#x27;).">
-<p class="kicker">▶ Gõ dòng này</p><h2>Sắp xếp · Router</h2><p class="pre">luật: trigger ở đây, chi tiết cách một bước</p><div class="cmd">Rút gọn CLAUDE.md còn ≤30 dòng; chuyển chi tiết sang 10-work/rules.md; ghi 3 file đọc đầu phiên.</div><p class="pre">→ /context lần 2, so với lần 1</p><p class="out">→ file đầu ra: <code>CLAUDE.md ≤30 dòng</code> · <code>10-work/rules.md</code></p>
-</section>
-
-<section class="slide slide--brk" data-block="NGHỈ" data-clock="1:30–1:40" data-notes="10&#x27;. Helper chạy login clinic. QR Lark Base &#x27;Kết quả&#x27; để upload sau.">
-<div class="brk"><div><h2>Nghỉ 10 phút</h2><p>Quét QR → Lark Base “Kết quả”. Upload ảnh file của bạn ở đây cả buổi.</p><p>Kẹt login? → bàn <b>login clinic</b> với helper.</p></div><div class="qrbox"><figure class="shot"><img src="img/33-qr-lark-base.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/33-qr-lark-base.png</b><span>QR tới Lark Base &#x27;Kết quả&#x27; (name · station · path · ảnh). Tạo bằng skill lark-base.</span></figcaption></figure></div></div>
-</section>
-
-<section class="slide slide--type" data-block="SỬ DỤNG · AI CŨNG LÀM" data-clock="1:40–1:52" data-notes="12&#x27;. Skill có sẵn trong starter-brain. Ai cũng chạy được, không cần lane.">
-<p class="kicker">▶ Gõ dòng này</p><h2>Sử dụng · ai cũng làm</h2><div class="cmd">/work-orders-lite <span class="var">&lt;dán 5–10 việc ngày mai, mỗi dòng: động từ + đối tượng + hạn&gt;</span></div><p class="out">→ file đầu ra: <code>96-daily/work-orders-&lt;date&gt;.md</code></p>
-</section>
-
-<section class="slide slide--img" data-block="SỬ DỤNG · AI CŨNG LÀM" data-clock="1:40–1:52" data-notes="Chiếu file thật rồi live. Đây là skill mỗi sáng.">
-<figure class="shot"><img src="img/35-work-orders-kevin.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/35-work-orders-kevin.png</b><span>96-daily/work-orders-&lt;date&gt;.md của Kevin trong Obsidian.</span></figcaption></figure><p class="caption">work-orders của Kevin: việc ngày mai thành file</p>
-</section>
-
-<section class="slide slide--lanes" data-block="SỬ DỤNG · CHỌN 1 LANE" data-clock="1:52–2:32" data-notes="40&#x27;. Kevin demo mỗi lane 3&#x27; bằng clip 60s (K1 · K4 · K5), rồi đi vòng. Xong sớm → 1 dòng E (cs-reply-bank, weekly, sop). MT-05.">
-<p class="kicker">▶ Gõ dòng này · chọn 1 lane</p><div class="lanes"><div class="lane"><h3>HR <small>K1</small></h3><div class="cmd">/interview-scorecard-lite prep 99-inbox/cv.md role=<span class="var">&lt;vị trí&gt;</span></div><div class="cmd">score <span class="var">&lt;slug&gt;</span>: <span class="var">&lt;3 dòng debrief&gt;</span></div><p class="out">→ <code>40-hr/candidates/&lt;slug&gt;.md</code></p><p class="dc">✓ + hàng trong candidates.base</p></div><div class="lane"><h3>Ops <small>K4</small></h3><div class="cmd">/meeting-summary 99-inbox/meeting.txt</div><p class="out">→ <code>96-daily/meeting-&lt;date&gt;.md</code></p><p class="dc">✓ ≥3 todo có owner · mục Email draft</p></div><div class="lane"><h3>Mkt <small>K5</small></h3><div class="cmd">Đọc 99-inbox/emails/, phân tích cấu trúc, viết chiến dịch 3 email cho <span class="var">&lt;X&gt;</span> vào 10-work/email-campaign-<span class="var">&lt;slug&gt;</span>.md kèm bảng &quot;vì sao&quot;.</div><p class="out">→ <code>10-work/email-campaign-&lt;slug&gt;.md</code></p><p class="dc">✓ 3 subject + 3 body + bảng vì sao</p></div></div><p class="pre">xong sớm → làm 1 dòng E: cs-reply-bank · weekly-report · sop · competitor · jd</p>
-</section>
-
-<section class="slide slide--img" data-block="SỬ DỤNG · CHỌN 1 LANE" data-clock="1:52–2:32" data-notes="Lane HR = K1: prep rồi score. Done-check: 5 điểm 1–6, câu hỏi tiếng Việt, hàng tự xếp hạng.">
-<figure class="shot"><img src="img/37-candidates-base-ranked.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/37-candidates-base-ranked.png</b><span>40-hr/candidates/candidates.base với ≥2 hàng, cột điểm, sắp xếp giảm dần.</span></figcaption></figure><p class="caption">HR: <code>candidates.base</code> tự xếp hạng ứng viên</p>
-</section>
-
-<section class="slide slide--img" data-block="SỬ DỤNG · CHỌN 1 LANE" data-clock="1:52–2:32" data-notes="Lane Ops = K4. Dừng ở .md, không gửi. Owner không rõ → TBD.">
-<figure class="shot"><img src="img/38-meeting-md.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/38-meeting-md.png</b><span>96-daily/meeting-2026-08-10.md: ≥3 todo có owner + mục &#x27;Email draft&#x27;.</span></figcaption></figure><p class="caption">Ops: họp thành tóm tắt, todo có owner, email draft</p>
-</section>
-
-<section class="slide slide--img" data-block="SỬ DỤNG · CHỌN 1 LANE" data-clock="1:52–2:32" data-notes="Lane Mkt = K5. Trễ → Kevin demo, marketer làm E1.">
-<figure class="shot"><img src="img/39-email-campaign-md.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/39-email-campaign-md.png</b><span>10-work/email-campaign-&lt;slug&gt;.md: 3 subject + 3 body + bảng vì sao.</span></figcaption></figure><p class="caption">Mkt: ba email + bảng “vì sao”, chưa gửi ai</p>
-</section>
-
-<section class="slide slide--img" data-block="SỬ DỤNG · VIDEO DEMO" data-clock="2:32–2:40" data-notes="K2 live: prompt-package + 1 clip render sẵn. &#x27;Len móc / lego = preset các bạn tự viết ở D1&#x27;. Rồi laptop-up 60s (Kevin chụp), 2 người chiếu 90s (1 mạnh, 1 kẹt). Upload Lark Base.">
-<figure class="shot"><img src="img/40-storyboard.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/40-storyboard.png</b><span>10-work/video-&lt;slug&gt;-storyboard.md hoặc PNG storyboard 6 cảnh phong cách len móc / lego.</span></figcaption></figure><p class="caption">Video: kịch bản 30 giây → sáu cảnh, chưa render</p>
-</section>
-
-<section class="slide slide--type" data-block="HUẤN LUYỆN · D1 SKILL" data-clock="2:40–3:00" data-notes="20&#x27;. MT-06. Không bao giờ cắt. Restart claude để nhận skill mới.">
-<p class="kicker">▶ Gõ dòng này</p><h2>Huấn luyện · D1 · skill của bạn</h2><div class="cmd">Nhìn lại việc vừa làm ở trạm này. Tạo .claude/skills/<span class="var">&lt;tên&gt;</span>/SKILL.md theo 98-templates/skill-template.md (name · description &quot;Use when I say…&quot; · Steps ghi rõ file đầu ra · Rules) và thêm 1 dòng vào 00.7-skills-index.md.</div><p class="pre">→ thoát và mở lại claude → /&lt;tên&gt; với input thật</p><p class="out">→ file đầu ra: <code>.claude/skills/&lt;tên&gt;/SKILL.md</code> · <code>dòng trong 00.7-skills-index.md</code> · <code>1 file đầu ra</code></p>
-</section>
-
-<section class="slide slide--code" data-block="HUẤN LUYỆN · D1 SKILL" data-clock="2:40–3:00" data-notes="4 trường: name · description (Use when I say…) · Steps (ghi rõ file đầu ra) · Rules. Trigger words nằm ở description.">
-<div class="code"><span class="tag">.claude/skills/&lt;tên&gt;/SKILL.md</span><pre>---
-<span class="k">name:</span> <span class="var">&lt;tên-skill&gt;</span>
-<span class="k">description:</span> Use when I say "<span class="var">&lt;câu bạn hay nói&gt;</span>" — <span class="c">từ kích hoạt ở đây</span>
----
-<span class="k">## Steps</span>
-1. Đọc <span class="var">&lt;input&gt;</span> trong 99-inbox/
-2. Viết <span class="var">&lt;file đầu ra&gt;</span> theo 98-templates/page-template.md
-3. Ghi 1 dòng vào 00.5-log.md
-<span class="k">## Rules</span>
-- Chỉ ghi file. Không gửi đi đâu.
-- Trước khi ghi cuối: hiện nháp, hỏi "OK / sửa gì?"  <span class="c">← thêm ở D2</span></pre></div><p class="caption">SKILL.md: bốn trường là đủ</p>
-</section>
-
-<section class="slide slide--img" data-block="HUẤN LUYỆN · D1 SKILL" data-clock="2:40–3:00" data-notes="Chỉ vào description: đó là cách skill được gọi. Steps ghi file đầu ra.">
-<figure class="shot"><img src="img/43-interview-scorecard-frontmatter.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/43-interview-scorecard-frontmatter.png</b><span>Frontmatter ~/.claude/skills/interview-scorecard/SKILL.md; tô các trigger words trong description.</span></figcaption></figure><p class="caption">Skill thật của Kevin: từ kích hoạt được tô sáng</p>
-</section>
-
-<section class="slide slide--img" data-block="HUẤN LUYỆN · D1 SKILL" data-clock="2:40–3:00" data-notes="Live trên vault thật hoặc starter-brain. 3 phút.">
-<figure class="shot"><img src="img/44-claude-writes-skill.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/44-claude-writes-skill.png</b><span>Terminal: Claude tạo .claude/skills/&lt;tên&gt;/SKILL.md, hiện nội dung / diff.</span></figcaption></figure><p class="caption">Claude tự viết SKILL.md mới từ việc vừa làm</p>
-</section>
-
-<section class="slide slide--img" data-block="HUẤN LUYỆN · D1 SKILL" data-clock="2:40–3:00" data-notes="Wire lại: skill không có trong index = không tồn tại.">
-<figure class="shot"><img src="img/45-skills-index-diff.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/45-skills-index-diff.png</b><span>Diff 00.7-skills-index.md (starter) hoặc 2-skills-index.md (LLM-Wiki) với 1 dòng thêm.</span></figcaption></figure><p class="caption">Thêm một dòng vào skills-index: skill mới tồn tại</p>
-</section>
-
-<section class="slide slide--type" data-block="HUẤN LUYỆN · D2 REVIEW GATE" data-clock="3:00–3:15" data-notes="15&#x27;. = ví dụ K3. Không bao giờ cắt. Claude phải thật sự dừng.">
-<p class="kicker">▶ Gõ dòng này</p><h2>Huấn luyện · D2 · review gate</h2><p class="pre">Kevin build mẫu live 5&#x27; — rồi bạn làm:</p><div class="cmd">Sửa skill vừa tạo: trước khi ghi file cuối, hiện bản nháp, hỏi &quot;OK / sửa gì?&quot;, chờ, rồi ghi verdict vào 00.5-log.md. Chạy lại.</div><p class="out">→ file đầu ra: <code>dòng  &lt;date&gt; · &lt;skill&gt; · verdict: OK  trong 00.5-log.md</code></p>
-</section>
-
-<section class="slide slide--img" data-block="HUẤN LUYỆN · D2 REVIEW GATE" data-clock="3:00–3:15" data-notes="Done-check: có dừng + có dòng verdict trong log.">
-<figure class="shot"><img src="img/47-terminal-ok-sua-gi.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/47-terminal-ok-sua-gi.png</b><span>Terminal: bản nháp + câu hỏi &#x27;OK / sửa gì?&#x27;, con trỏ đang chờ.</span></figcaption></figure><p class="caption">Claude thật sự dừng, hỏi “OK / sửa gì?”</p>
-</section>
-
-<section class="slide slide--img" data-block="HUẤN LUYỆN · D2 REVIEW GATE" data-clock="3:00–3:15" data-notes="Hook = bậc 2 của harness. Chỉ screenshot, không hands-on.">
-<figure class="shot"><img src="img/48-settings-stop-hook-blocked.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/48-settings-stop-hook-blocked.png</b><span>settings.json với Stop hook + terminal dòng BLOCKED. Chỉ chiếu, học viên không làm.</span></figcaption></figure><p class="caption">Bậc 2: Stop-hook trong <code>settings.json</code> chặn khi thiếu verdict</p>
-</section>
-
-<section class="slide slide--type" data-block="HUẤN LUYỆN · D3 MISTAKES" data-clock="3:15–3:25" data-notes="10&#x27;. Lỗi hôm nay ai cũng có: login, path, PDF quá dài.">
-<p class="kicker">▶ Gõ dòng này</p><h2>Huấn luyện · D3 · mistakes</h2><p class="pre">Kevin đọc 1 dòng thật trong 00.6-mistakes.md trước</p><div class="cmd">Ghi lỗi đầu tiên hôm nay vào 00.6-mistakes.md (Mistake / Root cause / Fix / Rule). Thêm vào CLAUDE.md: &quot;đọc 00.6-mistakes.md trước việc rủi ro; tự ghi lỗi mới&quot;.</div><p class="out">→ file đầu ra: <code>00.6-mistakes.md ≥1 entry</code> · <code>1 dòng mới trong CLAUDE.md</code></p>
-</section>
-
-<section class="slide slide--img" data-block="HUẤN LUYỆN · D3 MISTAKES" data-clock="3:15–3:25" data-notes="Đọc to 1 entry. Não học từ lỗi, không từ lời khen.">
-<figure class="shot"><img src="img/50-mistakes-md.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/50-mistakes-md.png</b><span>Một entry thật trong 00.6-mistakes.md: Mistake / Root cause / Fix / Rule.</span></figcaption></figure><p class="caption"><code>00.6-mistakes.md</code> của Kevin: lỗi thật, luật thật</p>
-</section>
-
-<section class="slide slide--type" data-block="HUẤN LUYỆN · D4 MONDAY" data-clock="3:25–3:45" data-notes="20&#x27;. MT-07. Laptop-up lần 2. Trễ → bỏ canvas (−10&#x27;).">
-<p class="kicker">▶ Gõ dòng này</p><h2>Huấn luyện · D4 · thứ Hai</h2><div class="cmd">Viết 96-daily/monday.md: 3 việc thứ Hai tôi chạy bằng brain này, mỗi việc gọi tên 1 skill.</div><p class="pre">tuỳ chọn:  Vẽ 10-work/brain-map.canvas: thư mục, trang, skill, mũi tên Distill→Wire→Harness.</p><p class="out">→ file đầu ra: <code>96-daily/monday.md</code> · <code>10-work/brain-map.canvas (tuỳ chọn)</code></p>
-</section>
-
-<section class="slide slide--img" data-block="HUẤN LUYỆN · D4 MONDAY" data-clock="3:25–3:45" data-notes="Chụp graph của 2–3 học viên chiếu lên. Đối chiếu với 3 chấm đầu buổi.">
-<figure class="shot"><img src="img/52-student-graph-skill-node.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/52-student-graph-skill-node.png</b><span>Graph view starter-brain sau D1–D4: node SKILL.md + monday.md nối vào.</span></figcaption></figure><p class="caption">Graph của bạn cuối buổi: có node skill của mình</p>
-</section>
-
-<section class="slide slide--divider" data-block="CLOSE" data-clock="3:45–4:00" data-notes="15&#x27;. Trễ → chỉ chụp ảnh tường, bỏ gallery.">
-<span class="big">04</span><h2>Kết</h2><p>tường kết quả · ghim · vòng lặp · 3 luật · QR</p>
-</section>
-
-<section class="slide slide--img" data-block="CLOSE" data-clock="3:45–4:00" data-notes="Mở gallery live nếu wifi ổn. Gọi tên 2–3 file đẹp.">
-<figure class="shot"><img src="img/54-lark-base-gallery.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/54-lark-base-gallery.png</b><span>Lark Base &#x27;Kết quả&#x27; dạng gallery, ≥20 thẻ ảnh của học viên.</span></figcaption></figure><p class="caption">Tường 20 kết quả: mỗi người một file</p>
-</section>
-
-<section class="slide slide--dg" data-block="CLOSE" data-clock="3:45–4:00" data-notes="Kéo ghim học viên lên bậc 2. Nhắc: HR của Kevin cũng từng ở bậc 1.">
-<div class="dg-host pins-moved"></div><p class="caption">Ghim của bạn: hôm nay bậc 1–2, tháng sau bậc 2–3</p>
-</section>
-
-<section class="slide slide--loop" data-block="CLOSE" data-clock="3:45–4:00" data-notes="Từ START-HERE: capture → process → brief → PDCA/skill → tổng hợp tuần.">
-<div class="loop"><div class="step"><span class="num">1</span><b>Thả vào inbox</b><span>đọc gì hay, họp xong → 99-inbox/</span></div><div class="step"><span class="num">2</span><b>Xử lý inbox</b><span>đáng giữ → distill; phân vân → để đó</span></div><div class="step"><span class="num">3</span><b>Đọc não buổi sáng</b><span>log · index · brief 2 phút</span></div><div class="step"><span class="num">4</span><b>Chạy 1 skill</b><span>/work-orders · lane của bạn</span></div><div class="step"><span class="num">5</span><b>Tổng hợp tuần</b><span>15&#x27; thứ Hai: 1 việc đáng làm nhất</span></div></div><p class="caption">Vòng lặp hằng ngày: năm bước, mười lăm phút</p>
-</section>
-
-<section class="slide slide--rules" data-block="CLOSE" data-clock="3:45–4:00" data-notes="3 luật để không bỏ cuộc. Đọc chậm.">
-<p class="kicker">3 luật để không bỏ cuộc</p><ol class="rules"><li><b>Phân vân → inbox.</b> Đừng phân loại cầu kỳ.</li><li><b>Bắt đầu nhỏ.</b> Mỗi ngày 1–2 note là đủ. Hệ thống tự lớn.</li><li><b>Mở não mỗi sáng.</b> Đọc log 2 phút, chạy 1 skill. Đó là vòng feedback.</li></ol>
-</section>
-
-<section class="slide slide--qr" data-block="CLOSE" data-clock="3:45–4:00" data-notes="QR → deck. Zip trên USB nếu wifi chết. Sau buổi: rebuild CLAUDE.md mỗi 2–3 tháng (context-budget-hygiene).">
-<div class="qr"><div class="qrbox"><figure class="shot"><img src="img/58-qr-deck.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/58-qr-deck.png</b><span>QR trỏ tới https://tuanquang269.github.io/second-brain-workshop/</span></figcaption></figure></div><div class="links"><p class="url">https://tuanquang269.github.io/second-brain-workshop/</p><a href="../starter-brain.zip">↓ starter-brain.zip</a><a href="../demo-data.zip">↓ demo-data.zip</a><p class="pre">Sau buổi: dựng lại CLAUDE.md từ đầu mỗi 2–3 tháng (context-budget-hygiene).</p></div></div><p class="caption">Mang về: starter zip, demo data, deck này</p>
+<section class="slide slide--close" data-block="KẾT" data-clock="3:45–4:00" data-notes="15'. Tường kết quả (Lark Base gallery) → 3 luật → QR. Zip có trên USB nếu wifi chết. Nhắc: dựng lại CLAUDE.md từ đầu mỗi 2–3 tháng.">
+<div class="close"><ol class="rules"><li><b>Phân vân → inbox.</b></li><li><b>Mỗi ngày 1–2 note.</b> Hệ thống tự lớn.</li><li><b>Mở não mỗi sáng:</b> đọc log 2 phút, chạy 1 skill.</li></ol><div class="side"><div class="qrbox"><figure class="shot"><img src="img/qr-deck.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/qr-deck.png</b><span>QR trỏ tới https://tuanquang269.github.io/second-brain-workshop/</span></figcaption></figure></div><p class="url">tuanquang269.github.io/<br>second-brain-workshop</p></div></div><p class="caption">Quét: bộ não mẫu, dữ liệu mẫu, deck này.</p>
 </section>
 </main>
 <div class="progress"></div>
-<div class="nav"><button data-go="-1" title="Slide trước (←)">‹</button><span class="counter">1 / 58</span><button data-go="1" title="Slide sau (→)">›</button></div>
-<div class="hints">← → Space · F toàn màn hình · N ghi chú · #số để link</div>
+<div class="nav"><button data-go="-1" title="Slide trước (←)">‹</button><span class="counter">1 / 6</span><button data-go="1" title="Slide sau (→)">›</button></div>
+<div class="hints">← → Space · F toàn màn hình · N ghi chú · phụ lục prompt: <a href="full.html" style="color:inherit">full.html</a></div>
 <aside class="notes"><b>Ghi chú diễn giả</b><p></p></aside>
 <script>
 (function(){
