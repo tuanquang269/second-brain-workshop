@@ -1,0 +1,125 @@
+<svg class="an" viewBox="0 0 1600 730" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bộ não thứ hai: 4 lớp, 3 động từ, kết quả ra ngoài não">
+<style>
+.an text{font-family:var(--font);fill:var(--text)}
+.an .mono{font-family:var(--mono)}
+.an .vault{fill:none;stroke:var(--line);stroke-width:2;rx:18}
+.an .vault-t{font-family:var(--mono);font-size:19px;font-weight:700;letter-spacing:.22em;fill:var(--dim)}
+.an .box{fill:var(--surface);stroke:var(--teal);stroke-width:2}
+.an .box.out{stroke:var(--accent);stroke-dasharray:none}
+.an .n{font-family:var(--mono);font-size:31px;font-weight:700;fill:var(--teal)}
+.an .box.out ~ .n,.an .n.ac{fill:var(--accent)}
+.an .s{font-size:18px;fill:var(--dim)}
+.an .chip{fill:var(--surface2);stroke:var(--line);stroke-width:1.5}
+.an .chip-t{font-size:16px;fill:var(--text)}
+.an .pill{fill:none;stroke:var(--accent);stroke-width:2}
+.an .pill-t{font-family:var(--mono);font-size:17px;fill:var(--text)}
+.an .arrow{stroke:var(--accent);stroke-width:9;stroke-linecap:round}
+.an .head{fill:var(--accent)}
+.an .verb{font-family:var(--mono);font-size:26px;font-weight:700;letter-spacing:.1em;fill:var(--accent)}
+.an .verb-s{font-size:16px;fill:var(--dim)}
+.an .strip{fill:var(--surface);stroke:var(--line);stroke-width:2}
+.an .bound{stroke:var(--accent);stroke-width:2.5;stroke-dasharray:10 9;opacity:.75}
+.an .bound-t{font-family:var(--mono);font-size:15px;letter-spacing:.12em;fill:var(--accent)}
+.an .fix{fill:var(--accent)}
+.an .fix-t{font-family:var(--mono);font-size:15px;fill:var(--accent)}
+.an .lvl{font-family:var(--mono);font-size:17px;fill:var(--dim)}
+.an .lvl b{fill:var(--text)}
+.an .ico{fill:none;stroke:var(--accent);stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round}
+</style>
+
+<!-- ============ vault container ============ -->
+<rect class="vault" x="26" y="54" width="1108" height="546" rx="18"/>
+<text class="vault-t" x="52" y="88">BỘ NÃO · VAULT OBSIDIAN · CHỈ .MD</text>
+
+<!-- 1_Nguồn -->
+<rect class="box" x="60" y="132" width="262" height="176" rx="12"/>
+<text class="n" x="84" y="178">1_Nguồn</text>
+<text class="s" x="84" y="212">bài viết · PDF · transcript</text>
+<text class="s" x="84" y="240">tin nhắn · khoá học</text>
+<text class="s" x="84" y="284" style="fill:var(--teal)">không bao giờ sửa bản gốc</text>
+
+<!-- DISTILL arrow -->
+<g>
+  <line class="arrow" x1="336" y1="220" x2="392" y2="220"/>
+  <path class="head" d="M392 206 L416 220 L392 234 Z"/>
+  <path class="ico" d="M338 118 L372 118 L358 140 L358 158 L352 158 L352 140 Z"/>
+  <text class="verb" x="330" y="102">DISTILL</text>
+</g>
+
+<!-- 2_Wiki -->
+<rect class="box" x="420" y="132" width="336" height="176" rx="12"/>
+<text class="n" x="444" y="178">2_Wiki</text>
+<text class="s" x="444" y="206">1 trang = 1 ý · có link · có nguồn</text>
+<g class="chips">
+  <rect class="chip" x="444" y="222" width="96" height="30" rx="15"/><text class="chip-t" x="460" y="242">Tóm tắt</text>
+  <rect class="chip" x="548" y="222" width="104" height="30" rx="15"/><text class="chip-t" x="564" y="242">Thực thể</text>
+  <rect class="chip" x="660" y="222" width="80" height="30" rx="15"/><text class="chip-t" x="674" y="242">So sánh</text>
+  <rect class="chip" x="444" y="260" width="108" height="30" rx="15"/><text class="chip-t" x="460" y="280">Khái niệm</text>
+  <rect class="chip" x="560" y="260" width="104" height="30" rx="15"/><text class="chip-t" x="576" y="280">Tổng hợp</text>
+</g>
+
+<!-- 3_Tôi -->
+<rect class="box" x="810" y="132" width="286" height="176" rx="12"/>
+<text class="n" x="834" y="178">3_Tôi</text>
+<text class="s" x="834" y="212">giọng văn · dữ kiện riêng</text>
+<text class="s" x="834" y="240">khách hàng · sản phẩm · luật</text>
+<text class="s" x="834" y="284" style="fill:var(--teal)">thứ AI không tra được</text>
+<line class="arrow" x1="770" y1="220" x2="796" y2="220" style="stroke-width:5;opacity:.5"/>
+
+<!-- WIRE strip -->
+<g>
+  <text class="verb" x="60" y="356">WIRE</text>
+  <path class="ico" d="M168 338 h20 M168 350 h20 M190 332 v24 a14 14 0 0 0 14 -12 v-0 a14 14 0 0 0 -14 -12 z"/>
+  <text class="verb-s" x="228" y="356">agent tìm được và chạy lại được</text>
+  <rect class="strip" x="60" y="372" width="1036" height="98" rx="12"/>
+  <rect class="pill" x="86" y="398" width="286" height="46" rx="23"/>
+  <text class="pill-t" x="106" y="427">CLAUDE.md <tspan class="s">(= AGENTS.md)</tspan></text>
+  <rect class="pill" x="392" y="398" width="200" height="46" rx="23"/><text class="pill-t" x="412" y="427">index-muc-luc</text>
+  <rect class="pill" x="612" y="398" width="164" height="46" rx="23"/><text class="pill-t" x="632" y="427">log-nhat-ky</text>
+  <rect class="pill" x="796" y="398" width="182" height="46" rx="23"/><text class="pill-t" x="816" y="427">mistakes</text>
+  <circle class="fix" cx="986" cy="392" r="10"/><text class="mono" x="982" y="397" style="font-size:13px;fill:var(--bg);font-weight:700">+</text>
+</g>
+
+<!-- engine strip -->
+<g>
+  <rect class="strip" x="60" y="496" width="1036" height="80" rx="12"/>
+  <path class="ico" d="M92 522 h34 v30 h-34 z M100 532 l8 5 -8 5"/>
+  <text class="pill-t" x="142" y="546">Claude Code chạy <tspan style="fill:var(--accent)">trong thư mục này</tspan> · ghi file thật</text>
+  <text class="lvl" x="640" y="540">bậc 1 prompt → 2 <tspan style="fill:var(--text);font-weight:700">skill</tspan> → 3 agent boss → 4 app</text>
+  <text class="lvl" x="640" y="562">càng lên: gõ ít hơn, giữ lại nhiều hơn</text>
+</g>
+
+<!-- ============ boundary + output ============ -->
+<line class="bound" x1="1160" y1="54" x2="1160" y2="600"/>
+<text class="bound-t" x="1178" y="590">tri thức vào · sản phẩm ra</text>
+
+<!-- HARNESS arrow across the boundary -->
+<g>
+  <line class="arrow" x1="1104" y1="220" x2="1188" y2="220"/>
+  <path class="head" d="M1188 204 L1216 220 L1188 236 Z"/>
+  <text class="verb" x="1104" y="102">HARNESS</text>
+  <path class="ico" d="M1112 118 h36 M1118 118 v18 M1142 118 v18 M1112 140 h36"/>
+  <text class="verb-s" x="1104" y="166">STOP → xem nháp → verdict vào log</text>
+</g>
+
+<rect class="box out" x="1232" y="132" width="338" height="176" rx="12"/>
+<text class="n ac" x="1256" y="178">4_Kết quả</text>
+<text class="s" x="1256" y="212">ad · báo cáo · SOP · email · canvas</text>
+<text class="s" x="1256" y="240">nằm ở <tspan class="mono">~/PATI/work</tspan> — ngoài não</text>
+<text class="s" x="1256" y="284" style="fill:var(--accent)">não không phình theo sản phẩm</text>
+<circle class="fix" cx="1552" cy="150" r="11"/><text class="mono" x="1547" y="156" style="font-size:14px;fill:var(--bg);font-weight:700">!</text>
+
+<!-- fix legend -->
+<g>
+  <circle class="fix" cx="1246" cy="380" r="11"/><text class="mono" x="1241" y="386" style="font-size:14px;fill:var(--bg);font-weight:700">!</text>
+  <text class="fix-t" x="1268" y="386">sửa: kết quả ra ngoài vault</text>
+  <circle class="fix" cx="1246" cy="418" r="10"/><text class="mono" x="1242" y="423" style="font-size:13px;fill:var(--bg);font-weight:700">+</text>
+  <text class="fix-t" x="1268" y="424">thêm: mistakes.md = học từ lỗi</text>
+  <circle class="fix" cx="1246" cy="456" r="10"/><text class="mono" x="1242" y="461" style="font-size:13px;fill:var(--bg);font-weight:700">✓</text>
+  <text class="fix-t" x="1268" y="462">CLAUDE.md — không phải AGENT.md</text>
+  <circle class="fix" cx="1246" cy="494" r="10"/><text class="mono" x="1242" y="499" style="font-size:13px;fill:var(--bg);font-weight:700">✓</text>
+  <text class="fix-t" x="1268" y="500">5 loại trang Wiki = 5 <tspan class="mono">type:</tspan></text>
+  <circle class="fix" cx="1246" cy="532" r="10"/><text class="mono" x="1242" y="537" style="font-size:13px;fill:var(--bg);font-weight:700">✓</text>
+  <text class="fix-t" x="1268" y="538">chat web không ghi file → cần agent local</text>
+</g>
+</svg>

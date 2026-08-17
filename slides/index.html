@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bộ não thứ hai với Claude Code — Finding Camp</title>
-<meta name="description" content="6 slide mốc cho workshop 240 phút. Prompt chi tiết: full.html">
+<meta name="description" content="6 slide mốc cho workshop 240 phút. Bấm L để mở mọi file thực hành. Prompt chi tiết: full.html">
 <style>
 :root{--bg:#0d0c0a;--surface:#161412;--surface2:#1d1a16;--line:#2e2924;--text:#f0e8d8;--dim:#a49b8b;
 --accent:#e08a3c;--accent-dim:rgba(224,138,60,.14);--teal:#5db3a5;--teal-dim:rgba(93,179,165,.16);
@@ -162,201 +162,256 @@ body.notes-open .notes{transform:none}
 .qr a:hover{border-color:var(--accent);color:var(--accent)}
 @media (max-width:900px){.lanes,.loop{grid-template-columns:1fr}.brk,.qr{grid-template-columns:1fr}.step:not(:last-child)::after{display:none}}
 
-/* 6-slide deck: bigger type, fewer objects */
-.slide{padding:8vh 6vw 9vh}
+/* ---- 6-slide deck: bigger type, fewer objects ---- */
+.slide{padding:7vh 5vw 9vh}
 .slide--ab{align-items:stretch;justify-content:center}
 .ab{display:grid;grid-template-columns:1fr auto 1fr;gap:2vw;align-items:center;flex:1;min-height:0}
-.ab__col{display:flex;flex-direction:column;gap:3.2vh;min-width:0}
+.ab__col{display:flex;flex-direction:column;gap:3vh;min-width:0}
 .ab__col h3{font-family:var(--mono);font-size:clamp(15px,1.6vw,26px);letter-spacing:.16em;text-transform:uppercase;color:var(--dim);font-weight:600}
 .ab__col.win h3{color:var(--accent)}
 .ab__row{display:flex;flex-direction:column;gap:.4vh}
-.ab__n{font-family:var(--mono);font-size:clamp(38px,5.4vw,96px);font-weight:700;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.ab__n{font-family:var(--mono);font-size:clamp(36px,5.2vw,92px);font-weight:700;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .ab__col.win .ab__n{color:var(--accent)}
 .ab__k{font-size:clamp(14px,1.4vw,23px);color:var(--dim)}
 .ab__vs{font-family:var(--mono);font-size:clamp(16px,1.6vw,26px);color:var(--dim);writing-mode:vertical-rl;letter-spacing:.3em;opacity:.6}
 .ab .ed{display:inline-block;min-width:2.6ch;border-bottom:3px dashed var(--dim);outline:none;cursor:text}
 .ab .ed:focus{border-bottom-color:var(--accent);background:var(--accent-dim)}
+/* anatomy diagram */
+.an-host{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
+.an-host svg{width:100%;height:100%;max-height:100%}
 /* 4 blocks */
-.blocks{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5vw;flex:1;min-height:0;align-content:center}
-.blk{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--accent);border-radius:12px;padding:3.4vh 1.5vw;display:flex;flex-direction:column;gap:1.6vh;min-width:0}
-.blk .clock{font-family:var(--mono);font-size:clamp(13px,1.25vw,21px);color:var(--dim);letter-spacing:.06em}
-.blk h3{font-size:clamp(22px,2.5vw,44px);font-weight:700;line-height:1.1}
-.blk .arrow{margin-top:auto;font-family:var(--mono);font-size:clamp(13px,1.25vw,21px);color:var(--accent);overflow-wrap:anywhere;line-height:1.4}
-/* lanes, 6-deck variant */
+.blocks{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4vw;flex:1;min-height:0;align-content:center}
+.blk{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--accent);border-radius:12px;padding:3vh 1.4vw;display:flex;flex-direction:column;gap:1.3vh;min-width:0}
+.blk .clock{font-family:var(--mono);font-size:clamp(13px,1.2vw,20px);color:var(--dim);letter-spacing:.06em}
+.blk h3{font-size:clamp(21px,2.4vw,42px);font-weight:700;line-height:1.1}
+.blk .arrow{font-family:var(--mono);font-size:clamp(12px,1.15vw,19px);color:var(--accent);overflow-wrap:anywhere;line-height:1.4}
+.blk .f{margin-top:auto}
+/* file links */
+a.f{font-family:var(--mono);font-size:clamp(12px,1.1vw,18px);color:var(--teal);text-decoration:none;border-bottom:1px dashed var(--teal);align-self:flex-start;overflow-wrap:anywhere;line-height:1.4}
+a.f:hover{color:var(--accent);border-bottom-color:var(--accent)}
+/* lanes */
 .slide--lane3 .lanes{flex:1;align-content:center}
-.slide--lane3 .lane{gap:2vh;justify-content:center;border-top:5px solid var(--teal)}
-.slide--lane3 .lane h3{font-size:clamp(26px,3vw,52px)}
-.slide--lane3 .lane .who{font-family:var(--mono);font-size:clamp(13px,1.25vw,21px);color:var(--dim);letter-spacing:.08em;text-transform:uppercase}
-.slide--lane3 .lane .out{font-family:var(--mono);font-size:clamp(14px,1.35vw,23px);color:var(--accent);overflow-wrap:anywhere;margin-top:0}
+.slide--lane3 .lane{gap:1.6vh;justify-content:center;border-top:5px solid var(--teal)}
+.slide--lane3 .lane h3{font-size:clamp(25px,2.9vw,50px)}
+.slide--lane3 .lane .who{font-family:var(--mono);font-size:clamp(13px,1.2vw,20px);color:var(--dim);letter-spacing:.08em;text-transform:uppercase}
+.slide--lane3 .lane .out{font-family:var(--mono);font-size:clamp(13px,1.3vw,22px);color:var(--accent);overflow-wrap:anywhere;margin-top:0}
 /* close */
 .close{display:grid;grid-template-columns:3fr 2fr;gap:4vw;align-items:center;flex:1;min-height:0}
-.close .rules{gap:3vh}
-.close .rules li{font-size:clamp(20px,2.4vw,42px);padding-left:2em}
-.close .qrbox{max-height:44vh}
-.close .url{font-family:var(--mono);font-size:clamp(13px,1.35vw,22px);color:var(--accent);overflow-wrap:anywhere;text-align:center;margin-top:1.6vh;line-height:1.4}
+.close .rules{gap:2.6vh}
+.close .rules li{font-size:clamp(19px,2.3vw,40px);padding-left:2em}
+.close .qrbox{max-height:38vh}
+.close .url{font-family:var(--mono);font-size:clamp(13px,1.3vw,21px);color:var(--accent);overflow-wrap:anywhere;text-align:center;margin-top:1.4vh;line-height:1.4}
 .close .side{display:flex;flex-direction:column;justify-content:center}
+.close .dl{display:flex;gap:1vw;justify-content:center;margin-top:1.6vh;flex-wrap:wrap}
+.close .dl a{font-family:var(--mono);font-size:clamp(13px,1.3vw,21px);color:var(--text);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:1vh 1.1vw;background:var(--surface)}
+.close .dl a:hover{border-color:var(--accent);color:var(--accent)}
+/* ---- links drawer (L) ---- */
+.dock{position:fixed;inset:0;background:rgba(8,8,7,.94);z-index:20;display:none;padding:6vh 6vw;overflow:auto}
+body.dock-open .dock{display:block}
+.dock h2{font-size:clamp(22px,2.4vw,40px);font-weight:700;margin-bottom:.6vh}
+.dock .sub{font-family:var(--mono);font-size:clamp(12px,1.2vw,19px);color:var(--dim);margin-bottom:3vh}
+.dock .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2vw 3vw}
+.dock section{display:flex;flex-direction:column;gap:1.2vh}
+.dock h3{font-family:var(--mono);font-size:clamp(12px,1.15vw,18px);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid var(--line);padding-bottom:.8vh}
+.dock a{font-family:var(--mono);font-size:clamp(13px,1.25vw,20px);color:var(--text);text-decoration:none;line-height:1.35;overflow-wrap:anywhere}
+.dock a:hover{color:var(--accent)}
+.dock a span{color:var(--dim);font-family:var(--font);font-size:.85em}
+.dock .x{position:fixed;top:3vh;right:4vw;font-family:var(--mono);font-size:14px;color:var(--dim);border:1px solid var(--line);border-radius:6px;padding:6px 10px;background:var(--surface);cursor:pointer}
+.nav .dockbtn{width:auto;padding:0 10px;font-size:12px;font-family:var(--mono)}
 @media (max-width:900px){.ab,.blocks,.close{grid-template-columns:1fr}.ab__vs{display:none}}
 </style>
 </head>
 <body>
-<template id="dg-tpl">
-
-<svg class="dg" viewBox="0 176 1600 604" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Distill → Wire → Harness × 4 bậc trên nền Obsidian vault">
-  <!-- slab -->
-  <rect class="slab" x="130" y="712" width="1338" height="58" rx="8"/>
-  <path class="ico" d="M170,731 h16 l6,6 h22 v20 h-44 z"/>
-  <text class="mono dim" x="222" y="751" font-size="15">.md</text>
-  <text class="slab-t" x="799" y="750" text-anchor="middle">OBSIDIAN VAULT</text>
-
-  <!-- platforms -->
-  <g class="plat p1">
-    <rect class="face" x="150" y="580" width="200" height="132" rx="4"/>
-    <line class="top" x1="150" y1="580" x2="350" y2="580"/>
-    <text class="name" x="250" y="614" text-anchor="middle">1 · PROMPT</text>
-    <text class="sub" x="250" y="642" text-anchor="middle">gõ tay,</text>
-    <text class="sub" x="250" y="664" text-anchor="middle">mất khi đóng chat</text>
-    <rect class="ico dash" x="205" y="496" width="90" height="56" rx="14"/>
-    <path class="ico dash" d="M232,552 l-8,16 l24,-16"/>
-    <text class="mono dim" x="250" y="530" font-size="15" text-anchor="middle">prompt…</text>
-    <path class="smoke" d="M232,486 c8,-10 -8,-22 0,-34" opacity=".7"/>
-    <path class="smoke" d="M250,482 c8,-12 -8,-24 0,-40" opacity=".5"/>
-    <path class="smoke" d="M268,486 c8,-10 -8,-22 0,-34" opacity=".3"/>
-  </g>
-  <g class="plat p2">
-    <rect class="face" x="516" y="490" width="200" height="222" rx="4"/>
-    <line class="top" x1="516" y1="490" x2="716" y2="490"/>
-    <text class="name" x="616" y="524" text-anchor="middle">2 · SKILL</text>
-    <text class="sub" x="616" y="552" text-anchor="middle">workflow đóng gói,</text>
-    <text class="sub" x="616" y="574" text-anchor="middle">chạy lại bằng 1 dòng</text>
-    <path class="ico file" d="M581,376 h50 l20,20 v72 h-70 z"/>
-    <path class="ico file" d="M631,376 v20 h20"/>
-    <text class="mono" x="616" y="436" font-size="14" font-weight="700" text-anchor="middle" fill="var(--accent)">SKILL.md</text>
-  </g>
-  <g class="plat p3">
-    <rect class="face" x="882" y="400" width="200" height="312" rx="4"/>
-    <line class="top" x1="882" y1="400" x2="1082" y2="400"/>
-    <text class="name" x="982" y="434" text-anchor="middle">3 · AGENT BOSS</text>
-    <text class="sub" x="982" y="462" text-anchor="middle">tự chạy nhiều skill,</text>
-    <text class="sub" x="982" y="484" text-anchor="middle">hỏi bạn khi cần</text>
-    <line class="ico" x1="972" y1="280" x2="972" y2="268"/>
-    <circle class="ico fill" cx="972" cy="264" r="4"/>
-    <rect class="ico" x="946" y="280" width="52" height="40" rx="8"/>
-    <circle cx="960" cy="300" r="5" fill="var(--teal)"/>
-    <circle cx="984" cy="300" r="5" fill="var(--teal)"/>
-    <rect class="ico" x="940" y="326" width="64" height="52" rx="8"/>
-    <rect class="ico" x="1014" y="302" width="40" height="54" rx="4"/>
-    <rect class="ico fill" x="1026" y="298" width="16" height="8" rx="2"/>
-    <line class="ico" x1="1021" y1="318" x2="1047" y2="318"/>
-    <line class="ico" x1="1021" y1="332" x2="1047" y2="332"/>
-    <line class="ico" x1="1021" y1="346" x2="1047" y2="346"/>
-    <path class="ico" d="M1034,366 v-6 a7,7 0 0 1 14,0 v6" stroke="var(--accent)"/>
-    <rect class="ico lock" x="1030" y="366" width="22" height="16" rx="3"/>
-  </g>
-  <g class="plat p4">
-    <rect class="face" x="1248" y="310" width="200" height="402" rx="4"/>
-    <line class="top" x1="1248" y1="310" x2="1448" y2="310"/>
-    <text class="name" x="1348" y="344" text-anchor="middle">4 · APP</text>
-    <text class="sub" x="1348" y="372" text-anchor="middle">người khác dùng,</text>
-    <text class="sub" x="1348" y="394" text-anchor="middle">không cần bạn</text>
-    <rect class="ico" x="1283" y="196" width="130" height="96" rx="8" fill="var(--surface2)"/>
-    <line class="ico" x1="1283" y1="216" x2="1413" y2="216"/>
-    <circle cx="1296" cy="206" r="3" fill="var(--dim)"/><circle cx="1308" cy="206" r="3" fill="var(--dim)"/><circle cx="1320" cy="206" r="3" fill="var(--dim)"/>
-    <circle class="ico fill" cx="1306" cy="246" r="9"/><path class="ico fill" d="M1292,278 a14,11 0 0 1 28,0"/>
-    <circle class="ico fill" cx="1334" cy="246" r="9"/><path class="ico fill" d="M1320,278 a14,11 0 0 1 28,0"/>
-    <circle class="ico fill" cx="1362" cy="246" r="9"/><path class="ico fill" d="M1348,278 a14,11 0 0 1 28,0"/>
-    <circle class="ico fill" cx="1390" cy="246" r="9"/><path class="ico fill" d="M1376,278 a14,11 0 0 1 28,0"/>
-  </g>
-
-  <!-- risers = 3 verbs -->
-  <g class="riser r1">
-    <line class="riser-line" x1="350" y1="568" x2="494.8" y2="486.8"/>
-    <path class="riser-head" d="M0,0 L-24,-12 L-24,12 z" transform="translate(514,476) rotate(-29.3)"/>
-    <path class="rico" d="M0,0 h24 l-9,11 v11 l-6,-4 v-7 z" transform="translate(360,411)"/>
-    <text class="t" x="394" y="432">DISTILL</text>
-    <text class="s" x="433" y="458" text-anchor="middle">nguồn thô → trang / SKILL.md</text>
-  </g>
-  <g class="riser r2">
-    <line class="riser-line" x1="716" y1="478" x2="860.8" y2="396.8"/>
-    <path class="riser-head" d="M0,0 L-24,-12 L-24,12 z" transform="translate(880,386) rotate(-29.3)"/>
-    <path class="rico" d="M7,0 v6 M17,0 v6 M2,6 h20 v6 a10,10 0 0 1 -20,0 z M12,22 v-4" transform="translate(749,321)"/>
-    <text class="t" x="783" y="342">WIRE</text>
-    <text class="s" x="799" y="368" text-anchor="middle">index + wikilink + hook</text>
-  </g>
-  <g class="riser r3">
-    <line class="riser-line" x1="1082" y1="388" x2="1226.8" y2="306.8"/>
-    <path class="riser-head" d="M0,0 L-24,-12 L-24,12 z" transform="translate(1246,296) rotate(-29.3)"/>
-    <path class="rico" d="M4,6 h16 a3,3 0 0 1 3,3 v6 a3,3 0 0 1 -3,3 h-16 a3,3 0 0 1 -3,-3 v-6 a3,3 0 0 1 3,-3 z M1,12 h-6 M23,12 h6 M9,12 h6" transform="translate(1092,231)"/>
-    <text class="t" x="1126" y="252">HARNESS</text>
-    <text class="s" x="1165" y="278" text-anchor="middle">gate · review · mistakes log</text>
-  </g>
-
-  <!-- margins -->
-  <g class="margins">
-    <text class="mtitle" x="75" y="440" text-anchor="middle">CHI PHÍ</text>
-    <text class="mtitle" x="75" y="460" text-anchor="middle">mỗi lần chạy</text>
-    <rect class="bar-cost" x="33" y="500" width="18" height="200"/>
-    <rect class="bar-cost" x="57" y="560" width="18" height="140"/>
-    <rect class="bar-cost" x="81" y="620" width="18" height="80"/>
-    <rect class="bar-cost" x="105" y="670" width="18" height="30"/>
-    <text class="bar-n" x="42" y="492" text-anchor="middle">1</text>
-    <text class="bar-n" x="66" y="552" text-anchor="middle">2</text>
-    <text class="bar-n" x="90" y="612" text-anchor="middle">3</text>
-    <text class="bar-n" x="114" y="662" text-anchor="middle">4</text>
-    <text class="mtitle" x="1524" y="440" text-anchor="middle">THỨ BẠN</text>
-    <text class="mtitle" x="1524" y="460" text-anchor="middle">giữ lại</text>
-    <rect class="bar-keep" x="1482" y="670" width="18" height="30"/>
-    <rect class="bar-keep" x="1506" y="620" width="18" height="80"/>
-    <rect class="bar-keep" x="1530" y="560" width="18" height="140"/>
-    <rect class="bar-keep" x="1554" y="500" width="18" height="200"/>
-    <text class="bar-n" x="1491" y="662" text-anchor="middle">1</text>
-    <text class="bar-n" x="1515" y="612" text-anchor="middle">2</text>
-    <text class="bar-n" x="1539" y="552" text-anchor="middle">3</text>
-    <text class="bar-n" x="1563" y="492" text-anchor="middle">4</text>
-  </g>
-
-  <!-- pins -->
-  <g class="pins">
-    <g class="pin"><path d="M900,545 c-9,-14 -9,-26 0,-30 c9,4 9,16 0,30 z"/><text class="pn" x="916" y="537">HR · bậc 3</text><text class="ps" x="916" y="555">interview-scorecard</text></g>
-    <g class="pin"><path d="M534,612 c-9,-14 -9,-26 0,-30 c9,4 9,16 0,30 z"/><text class="pn" x="550" y="604">Video · bậc 2</text><text class="ps" x="550" y="622">animated-ad-creator</text></g>
-    <g class="pin"><path d="M534,652 c-9,-14 -9,-26 0,-30 c9,4 9,16 0,30 z"/><text class="pn" x="550" y="644">Copy · bậc 2</text><text class="ps" x="550" y="662">email campaign</text></g>
-    <g class="pins-after">
-      <g class="pin you"><path d="M534,692 c-9,-14 -9,-26 0,-30 c9,4 9,16 0,30 z"/><text class="pn" x="550" y="684">BẠN · hôm nay</text><text class="ps" x="550" y="702">skill từ D1</text></g>
-      <g class="pin you"><path d="M900,600 c-9,-14 -9,-26 0,-30 c9,4 9,16 0,30 z"/><text class="pn" x="916" y="592">BẠN · tháng sau</text><text class="ps" x="916" y="610">gate + mistakes log</text></g>
-    </g>
-  </g>
-</svg>
-
-
-</template>
 <main class="deck">
-<section class="slide slide--title" data-block="MỞ ĐẦU" data-clock="0:00" data-notes="Chào 60 giây. Rồi mở ngay A/B live — không giảng. Slide chỉ là mốc; 80% thời gian màn hình là terminal + Obsidian.">
-<p class="sub">Finding Camp · 240 phút</p><h1>Bộ não thứ hai<br>với Claude Code</h1><p class="rule">80% thực hành · mỗi trạm = 1 file mở trong Obsidian</p><p class="who">Kevin Kreative · PATI Group</p>
+<section class="slide slide--title" data-block="MỞ ĐẦU" data-clock="0:00" data-notes="Chào 60 giây rồi mở A/B live — không giảng. Chỉ cho cả phòng: bấm L (hoặc nút 📎 Tài liệu) là ra mọi file cần tải.">
+<p class="sub">Finding Camp · 240 phút</p><h1>Bộ não thứ hai<br>với Claude Code</h1><p class="rule">80% thực hành · mỗi trạm = 1 file mở trong Obsidian</p><p class="who">Kevin Kreative · PATI Group</p><p class="who">Bấm <b style="color:var(--accent)">L</b> để mở mọi file thực hành · <a class="f" href="../starter-brain.zip" target="_blank" rel="noopener">starter-brain.zip ↗</a> · <a class="f" href="../demo-data.zip" target="_blank" rel="noopener">demo-data.zip ↗</a></p>
 </section>
 
 <section class="slide slide--ab" data-block="WHY" data-clock="0:00–0:20" data-notes="20'. Chạy A/B thật: pane trái ~/demo-empty + prompt 250 từ · pane phải /interview-scorecard prep. Bấm giờ, gõ số vào 2 ô __ ngay trên slide, chạy /cost, rồi Cmd+W cả hai. Fallback: hook-ab.mp4.">
 <div class="ab"><div class="ab__col"><h3>Chat trần</h3><div class="ab__row"><span class="ab__n">250</span><span class="ab__k">từ phải gõ</span></div><div class="ab__row"><span class="ab__n"><span class="ed" contenteditable="true" spellcheck="false">__</span></span><span class="ab__k">phút tới file dùng được</span></div><div class="ab__row"><span class="ab__n">0</span><span class="ab__k">file còn lại sau Cmd+W</span></div></div><div class="ab__vs">so với</div><div class="ab__col win"><h3>Bộ não</h3><div class="ab__row"><span class="ab__n">7</span><span class="ab__k">từ phải gõ</span></div><div class="ab__row"><span class="ab__n"><span class="ed" contenteditable="true" spellcheck="false">__</span></span><span class="ab__k">phút tới file dùng được</span></div><div class="ab__row"><span class="ab__n">1</span><span class="ab__k">file + 1 skill giữ lại</span></div></div></div><p class="caption">Cùng một việc. Đóng tab: một bên mất, một bên còn.</p>
 </section>
 
-<section class="slide slide--dg" data-block="WHAT" data-clock="0:20–0:30" data-notes="10'. Chỉ hình này. Distill = nguồn thô → 1 trang/1 skill. Wire = index + link + skill-index (không index = không tồn tại). Harness = STOP, verdict, mistakes log. Hỏi cả phòng: việc của bạn đang ở bậc mấy?">
-<div class="dg-host"></div><p class="caption">Distill → Wire → Harness. Prompt → Skill → Agent boss → App.</p>
+<section class="slide slide--an" data-block="WHAT" data-clock="0:20–0:30" data-notes="10'. Vẽ lại từ sơ đồ @namhethong, đã kiểm chứng: 5 loại trang Wiki = 5 giá trị type: trong SCHEMA.md ✓. Sửa 3 chỗ: (1) 4_Kết quả nằm NGOÀI vault — knowledge in, outputs out; (2) file luật phải tên CLAUDE.md — test 2026-08-17 trên Claude Code 2.1.233: CLAUDE.md nạp, AGENTS.md và AGENT.md KHÔNG nạp; (3) chat web không ghi được file, cần agent chạy local. Thêm mistakes.md = vòng học từ lỗi.">
+<div class="an-host"></div><p class="caption">Bốn lớp · ba động từ · sản phẩm ra ngoài não.</p>
 </section>
 
-<section class="slide slide--blocks" data-block="HOW" data-clock="0:30–3:45" data-notes="Nói 60 giây rồi vào việc. Prompt để gõ: chiếu full.html (phụ lục 58 slide) hoặc đọc từ 26-second-brain-workshop.md §2. Nghỉ 1:35–1:45 — helper chạy login clinic.">
-<div class="blocks"><div class="blk"><span class="clock">0:30–0:55</span><h3>Cài đặt</h3><span class="arrow">→ CLAUDE.md ≤40 dòng</span></div><div class="blk"><span class="clock">0:55–1:35</span><h3>Sắp xếp</h3><span class="arrow">→ 10-work/1-&lt;slug&gt;.md + index</span></div><div class="blk"><span class="clock">1:45–2:40</span><h3>Sử dụng</h3><span class="arrow">→ 1 file lane của bạn</span></div><div class="blk"><span class="clock">2:40–3:45</span><h3>Huấn luyện</h3><span class="arrow">→ .claude/skills/&lt;tên&gt;/SKILL.md</span></div></div><p class="caption">Bốn trạm. Mỗi trạm về nhà bằng một file.</p>
+<section class="slide slide--blocks" data-block="HOW" data-clock="0:30–3:45" data-notes="Nói 60 giây rồi vào việc. Dòng lệnh từng trạm: bấm L → full.html. Nghỉ 1:35–1:45, helper chạy login clinic.">
+<div class="blocks"><div class="blk"><span class="clock">0:30–0:55</span><h3>Cài đặt</h3><span class="arrow">→ CLAUDE.md ≤40 dòng</span><span class="f"><a class="f" href="../pre-work-email.md" target="_blank" rel="noopener">pre-work-email.md ↗</a></span></div><div class="blk"><span class="clock">0:55–1:35</span><h3>Sắp xếp</h3><span class="arrow">→ 10-work/1-&lt;slug&gt;.md</span><span class="f"><a class="f" href="../demo-data/sop-order-handling-raw.txt" target="_blank" rel="noopener">sop-order-handling-raw.txt ↗</a></span></div><div class="blk"><span class="clock">1:45–2:40</span><h3>Sử dụng</h3><span class="arrow">→ 1 file lane của bạn</span><span class="f"><a class="f" href="../demo-data.zip" target="_blank" rel="noopener">demo-data.zip ↗</a></span></div><div class="blk"><span class="clock">2:40–3:45</span><h3>Huấn luyện</h3><span class="arrow">→ .claude/skills/&lt;tên&gt;/SKILL.md</span><span class="f"><a class="f" href="../starter-brain/98-templates/skill-template.md" target="_blank" rel="noopener">skill-template.md ↗</a></span></div></div><p class="caption">Bốn trạm. Mỗi trạm về nhà bằng một file.</p>
 </section>
 
-<section class="slide slide--lane3" data-block="SỬ DỤNG" data-clock="1:45–2:40" data-notes="55'. Demo mỗi lane 3' bằng clip 60s rồi đi vòng. Xong sớm → thêm 1 việc: cs-reply-bank · weekly-report · sop · competitor · jd. Không render video, không gửi mail — dừng ở file .md.">
-<div class="lanes"><div class="lane"><span class="who">tuyển dụng</span><h3>HR</h3><p class="dc">1 CV → câu hỏi + điểm</p><p class="out">→ 40-hr/candidates/&lt;slug&gt;.md</p></div><div class="lane"><span class="who">vận hành</span><h3>Ops</h3><p class="dc">transcript họp → quyết định + việc</p><p class="out">→ 96-daily/meeting-&lt;date&gt;.md</p></div><div class="lane"><span class="who">marketing</span><h3>Mkt</h3><p class="dc">3 email đối thủ → chiến dịch 3 email</p><p class="out">→ 10-work/email-campaign-&lt;slug&gt;.md</p></div></div><p class="caption">Chọn một lane. Việc thật của bạn, không phải ví dụ.</p>
+<section class="slide slide--lane3" data-block="SỬ DỤNG" data-clock="1:45–2:40" data-notes="55'. Demo mỗi lane 3' rồi đi vòng. Ai không mang việc thật thì click file mẫu ngay trên slide. Không render video, không gửi mail — dừng ở file .md.">
+<div class="lanes"><div class="lane"><span class="who">tuyển dụng</span><h3>HR</h3><p class="dc">1 CV → câu hỏi + điểm</p><p class="out">→ 40-hr/candidates/&lt;slug&gt;.md</p><a class="f" href="../demo-data/cv-nguyen-van-a.md" target="_blank" rel="noopener">cv-nguyen-van-a.md ↗</a></div><div class="lane"><span class="who">vận hành</span><h3>Ops</h3><p class="dc">transcript họp → quyết định + việc</p><p class="out">→ 96-daily/meeting-&lt;date&gt;.md</p><a class="f" href="../demo-data/meeting-2026-08-10.txt" target="_blank" rel="noopener">meeting-2026-08-10.txt ↗</a></div><div class="lane"><span class="who">marketing</span><h3>Mkt</h3><p class="dc">3 email đối thủ → chiến dịch 3 email</p><p class="out">→ 10-work/email-campaign-&lt;slug&gt;.md</p><a class="f" href="../demo-data/emails/promo-1.txt" target="_blank" rel="noopener">emails/promo-1..3.txt ↗</a></div></div><p class="caption">Chọn một lane. Việc thật của bạn — hoặc file mẫu ở trên.</p>
 </section>
 
-<section class="slide slide--close" data-block="KẾT" data-clock="3:45–4:00" data-notes="15'. Tường kết quả (Lark Base gallery) → 3 luật → QR. Zip có trên USB nếu wifi chết. Nhắc: dựng lại CLAUDE.md từ đầu mỗi 2–3 tháng.">
-<div class="close"><ol class="rules"><li><b>Phân vân → inbox.</b></li><li><b>Mỗi ngày 1–2 note.</b> Hệ thống tự lớn.</li><li><b>Mở não mỗi sáng:</b> đọc log 2 phút, chạy 1 skill.</li></ol><div class="side"><div class="qrbox"><figure class="shot"><img src="img/qr-deck.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/qr-deck.png</b><span>QR trỏ tới https://tuanquang269.github.io/second-brain-workshop/</span></figcaption></figure></div><p class="url">tuanquang269.github.io/<br>second-brain-workshop</p></div></div><p class="caption">Quét: bộ não mẫu, dữ liệu mẫu, deck này.</p>
+<section class="slide slide--close" data-block="KẾT" data-clock="3:45–4:00" data-notes="15'. Tường kết quả → 3 luật → QR. Zip cũng có trên USB nếu wifi chết. Nhắc: dựng lại CLAUDE.md từ đầu mỗi 2–3 tháng.">
+<div class="close"><ol class="rules"><li><b>Phân vân → inbox.</b></li><li><b>Mỗi ngày 1–2 note.</b> Hệ thống tự lớn.</li><li><b>Mở não mỗi sáng:</b> đọc log 2 phút, chạy 1 skill.</li></ol><div class="side"><div class="qrbox"><figure class="shot"><img src="img/qr-deck.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption class="shot__todo"><b>▢ CHỤP · img/qr-deck.png</b><span>QR trỏ tới https://tuanquang269.github.io/second-brain-workshop/</span></figcaption></figure></div><p class="url">tuanquang269.github.io/<br>second-brain-workshop</p><div class="dl"><a href="../starter-brain.zip" target="_blank" rel="noopener">↓ starter-brain.zip</a><a href="../demo-data.zip" target="_blank" rel="noopener">↓ demo-data.zip</a></div></div></div><p class="caption">Quét hoặc bấm: bộ não mẫu, dữ liệu mẫu, deck này.</p>
 </section>
 </main>
 <div class="progress"></div>
-<div class="nav"><button data-go="-1" title="Slide trước (←)">‹</button><span class="counter">1 / 6</span><button data-go="1" title="Slide sau (→)">›</button></div>
-<div class="hints">← → Space · F toàn màn hình · N ghi chú · phụ lục prompt: <a href="full.html" style="color:inherit">full.html</a></div>
+<div class="nav"><button data-go="-1" title="Slide trước (←)">‹</button><span class="counter">1 / 6</span><button data-go="1" title="Slide sau (→)">›</button><button class="dockbtn" title="Tài liệu thực hành (L)">📎 Tài liệu</button></div>
+<div class="hints">← → Space · F toàn màn hình · N ghi chú · <b style="color:var(--accent)">L tài liệu</b></div>
 <aside class="notes"><b>Ghi chú diễn giả</b><p></p></aside>
+<aside class="dock"><button class="x" data-dock-close>ĐÓNG · L</button>
+<h2>Tài liệu thực hành</h2>
+<p class="sub">Click là mở. Mọi file nằm trong repo — dùng được cả khi chiếu offline.</p>
+<div class="cols">
+<section><h3>Tải về · làm 1 lần</h3>
+<a href="../starter-brain.zip" target="_blank" rel="noopener">starter-brain.zip<br><span>bộ não mẫu — giải nén, mở bằng Obsidian</span></a>
+<a href="../demo-data.zip" target="_blank" rel="noopener">demo-data.zip<br><span>dữ liệu mẫu nếu bạn không mang việc thật</span></a>
+<a href="../pre-work-email.md" target="_blank" rel="noopener">pre-work-email.md<br><span>cài Obsidian + Claude Code</span></a>
+<a href="https://github.com/tuanquang269/second-brain-workshop" target="_blank" rel="noopener">github repo<br><span>toàn bộ bộ kit</span></a>
+</section>
+<section><h3>Prompt để gõ</h3>
+<a href="full.html" target="_blank" rel="noopener">full.html<br><span>phụ lục: mọi dòng lệnh của 4 trạm</span></a>
+<a href="../starter-brain/98-templates/skill-template.md" target="_blank" rel="noopener">skill-template.md<br><span>mẫu SKILL.md 4 trường</span></a>
+<a href="../starter-brain/98-templates/page-template.md" target="_blank" rel="noopener">page-template.md<br><span>mẫu trang kiến thức</span></a>
+<a href="../starter-brain/00.7-skills-index.md" target="_blank" rel="noopener">00.7-skills-index.md<br><span>8 skill có sẵn + chỗ ghi skill của bạn</span></a>
+</section>
+<section><h3>File mẫu · lane HR</h3>
+<a href="../demo-data/cv-nguyen-van-a.md" target="_blank" rel="noopener">cv-nguyen-van-a.md<br><span>CV ứng viên 1</span></a>
+<a href="../demo-data/cv-tran-thi-b.md" target="_blank" rel="noopener">cv-tran-thi-b.md<br><span>CV ứng viên 2</span></a>
+<a href="../demo-data/job-post-marketing-exec.md" target="_blank" rel="noopener">job-post-marketing-exec.md<br><span>tin tuyển dụng</span></a>
+</section>
+<section><h3>File mẫu · lane Ops</h3>
+<a href="../demo-data/meeting-2026-08-10.txt" target="_blank" rel="noopener">meeting-2026-08-10.txt<br><span>transcript họp 12 phút</span></a>
+<a href="../demo-data/sop-order-handling-raw.txt" target="_blank" rel="noopener">sop-order-handling-raw.txt<br><span>voice memo quy trình đơn hàng</span></a>
+<a href="../demo-data/ticket-042.md" target="_blank" rel="noopener">ticket-042.md<br><span>ticket CSKH cần review trước khi đóng</span></a>
+</section>
+<section><h3>File mẫu · lane Mkt</h3>
+<a href="../demo-data/emails/promo-1.txt" target="_blank" rel="noopener">promo-1.txt<br><span>email đối thủ 1 — bỏ giỏ</span></a>
+<a href="../demo-data/emails/promo-2.txt" target="_blank" rel="noopener">promo-2.txt<br><span>email đối thủ 2 — dạy khách</span></a>
+<a href="../demo-data/emails/promo-3.txt" target="_blank" rel="noopener">promo-3.txt<br><span>email đối thủ 3 — sau mua</span></a>
+<a href="../demo-data/product-onepager.md" target="_blank" rel="noopener">product-onepager.md<br><span>one-pager sản phẩm</span></a>
+</section>
+</div></aside>
+<template id="an-tpl">
+<svg class="an" viewBox="0 0 1600 730" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bộ não thứ hai: 4 lớp, 3 động từ, kết quả ra ngoài não">
+<style>
+.an text{font-family:var(--font);fill:var(--text)}
+.an .mono{font-family:var(--mono)}
+.an .vault{fill:none;stroke:var(--line);stroke-width:2;rx:18}
+.an .vault-t{font-family:var(--mono);font-size:19px;font-weight:700;letter-spacing:.22em;fill:var(--dim)}
+.an .box{fill:var(--surface);stroke:var(--teal);stroke-width:2}
+.an .box.out{stroke:var(--accent);stroke-dasharray:none}
+.an .n{font-family:var(--mono);font-size:31px;font-weight:700;fill:var(--teal)}
+.an .box.out ~ .n,.an .n.ac{fill:var(--accent)}
+.an .s{font-size:18px;fill:var(--dim)}
+.an .chip{fill:var(--surface2);stroke:var(--line);stroke-width:1.5}
+.an .chip-t{font-size:16px;fill:var(--text)}
+.an .pill{fill:none;stroke:var(--accent);stroke-width:2}
+.an .pill-t{font-family:var(--mono);font-size:17px;fill:var(--text)}
+.an .arrow{stroke:var(--accent);stroke-width:9;stroke-linecap:round}
+.an .head{fill:var(--accent)}
+.an .verb{font-family:var(--mono);font-size:26px;font-weight:700;letter-spacing:.1em;fill:var(--accent)}
+.an .verb-s{font-size:16px;fill:var(--dim)}
+.an .strip{fill:var(--surface);stroke:var(--line);stroke-width:2}
+.an .bound{stroke:var(--accent);stroke-width:2.5;stroke-dasharray:10 9;opacity:.75}
+.an .bound-t{font-family:var(--mono);font-size:15px;letter-spacing:.12em;fill:var(--accent)}
+.an .fix{fill:var(--accent)}
+.an .fix-t{font-family:var(--mono);font-size:15px;fill:var(--accent)}
+.an .lvl{font-family:var(--mono);font-size:17px;fill:var(--dim)}
+.an .lvl b{fill:var(--text)}
+.an .ico{fill:none;stroke:var(--accent);stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round}
+</style>
+
+<!-- ============ vault container ============ -->
+<rect class="vault" x="26" y="54" width="1108" height="546" rx="18"/>
+<text class="vault-t" x="52" y="88">BỘ NÃO · VAULT OBSIDIAN · CHỈ .MD</text>
+
+<!-- 1_Nguồn -->
+<rect class="box" x="60" y="132" width="262" height="176" rx="12"/>
+<text class="n" x="84" y="178">1_Nguồn</text>
+<text class="s" x="84" y="212">bài viết · PDF · transcript</text>
+<text class="s" x="84" y="240">tin nhắn · khoá học</text>
+<text class="s" x="84" y="284" style="fill:var(--teal)">không bao giờ sửa bản gốc</text>
+
+<!-- DISTILL arrow -->
+<g>
+  <line class="arrow" x1="336" y1="220" x2="392" y2="220"/>
+  <path class="head" d="M392 206 L416 220 L392 234 Z"/>
+  <path class="ico" d="M338 118 L372 118 L358 140 L358 158 L352 158 L352 140 Z"/>
+  <text class="verb" x="330" y="102">DISTILL</text>
+</g>
+
+<!-- 2_Wiki -->
+<rect class="box" x="420" y="132" width="336" height="176" rx="12"/>
+<text class="n" x="444" y="178">2_Wiki</text>
+<text class="s" x="444" y="206">1 trang = 1 ý · có link · có nguồn</text>
+<g class="chips">
+  <rect class="chip" x="444" y="222" width="96" height="30" rx="15"/><text class="chip-t" x="460" y="242">Tóm tắt</text>
+  <rect class="chip" x="548" y="222" width="104" height="30" rx="15"/><text class="chip-t" x="564" y="242">Thực thể</text>
+  <rect class="chip" x="660" y="222" width="80" height="30" rx="15"/><text class="chip-t" x="674" y="242">So sánh</text>
+  <rect class="chip" x="444" y="260" width="108" height="30" rx="15"/><text class="chip-t" x="460" y="280">Khái niệm</text>
+  <rect class="chip" x="560" y="260" width="104" height="30" rx="15"/><text class="chip-t" x="576" y="280">Tổng hợp</text>
+</g>
+
+<!-- 3_Tôi -->
+<rect class="box" x="810" y="132" width="286" height="176" rx="12"/>
+<text class="n" x="834" y="178">3_Tôi</text>
+<text class="s" x="834" y="212">giọng văn · dữ kiện riêng</text>
+<text class="s" x="834" y="240">khách hàng · sản phẩm · luật</text>
+<text class="s" x="834" y="284" style="fill:var(--teal)">thứ AI không tra được</text>
+<line class="arrow" x1="770" y1="220" x2="796" y2="220" style="stroke-width:5;opacity:.5"/>
+
+<!-- WIRE strip -->
+<g>
+  <text class="verb" x="60" y="356">WIRE</text>
+  <path class="ico" d="M168 338 h20 M168 350 h20 M190 332 v24 a14 14 0 0 0 14 -12 v-0 a14 14 0 0 0 -14 -12 z"/>
+  <text class="verb-s" x="228" y="356">agent tìm được và chạy lại được</text>
+  <rect class="strip" x="60" y="372" width="1036" height="98" rx="12"/>
+  <rect class="pill" x="86" y="398" width="286" height="46" rx="23"/>
+  <text class="pill-t" x="106" y="427">CLAUDE.md <tspan class="s">(= AGENTS.md)</tspan></text>
+  <rect class="pill" x="392" y="398" width="200" height="46" rx="23"/><text class="pill-t" x="412" y="427">index-muc-luc</text>
+  <rect class="pill" x="612" y="398" width="164" height="46" rx="23"/><text class="pill-t" x="632" y="427">log-nhat-ky</text>
+  <rect class="pill" x="796" y="398" width="182" height="46" rx="23"/><text class="pill-t" x="816" y="427">mistakes</text>
+  <circle class="fix" cx="986" cy="392" r="10"/><text class="mono" x="982" y="397" style="font-size:13px;fill:var(--bg);font-weight:700">+</text>
+</g>
+
+<!-- engine strip -->
+<g>
+  <rect class="strip" x="60" y="496" width="1036" height="80" rx="12"/>
+  <path class="ico" d="M92 522 h34 v30 h-34 z M100 532 l8 5 -8 5"/>
+  <text class="pill-t" x="142" y="546">Claude Code chạy <tspan style="fill:var(--accent)">trong thư mục này</tspan> · ghi file thật</text>
+  <text class="lvl" x="640" y="540">bậc 1 prompt → 2 <tspan style="fill:var(--text);font-weight:700">skill</tspan> → 3 agent boss → 4 app</text>
+  <text class="lvl" x="640" y="562">càng lên: gõ ít hơn, giữ lại nhiều hơn</text>
+</g>
+
+<!-- ============ boundary + output ============ -->
+<line class="bound" x1="1160" y1="54" x2="1160" y2="600"/>
+<text class="bound-t" x="1178" y="590">tri thức vào · sản phẩm ra</text>
+
+<!-- HARNESS arrow across the boundary -->
+<g>
+  <line class="arrow" x1="1104" y1="220" x2="1188" y2="220"/>
+  <path class="head" d="M1188 204 L1216 220 L1188 236 Z"/>
+  <text class="verb" x="1104" y="102">HARNESS</text>
+  <path class="ico" d="M1112 118 h36 M1118 118 v18 M1142 118 v18 M1112 140 h36"/>
+  <text class="verb-s" x="1104" y="166">STOP → xem nháp → verdict vào log</text>
+</g>
+
+<rect class="box out" x="1232" y="132" width="338" height="176" rx="12"/>
+<text class="n ac" x="1256" y="178">4_Kết quả</text>
+<text class="s" x="1256" y="212">ad · báo cáo · SOP · email · canvas</text>
+<text class="s" x="1256" y="240">nằm ở <tspan class="mono">~/PATI/work</tspan> — ngoài não</text>
+<text class="s" x="1256" y="284" style="fill:var(--accent)">não không phình theo sản phẩm</text>
+<circle class="fix" cx="1552" cy="150" r="11"/><text class="mono" x="1547" y="156" style="font-size:14px;fill:var(--bg);font-weight:700">!</text>
+
+<!-- fix legend -->
+<g>
+  <circle class="fix" cx="1246" cy="380" r="11"/><text class="mono" x="1241" y="386" style="font-size:14px;fill:var(--bg);font-weight:700">!</text>
+  <text class="fix-t" x="1268" y="386">sửa: kết quả ra ngoài vault</text>
+  <circle class="fix" cx="1246" cy="418" r="10"/><text class="mono" x="1242" y="423" style="font-size:13px;fill:var(--bg);font-weight:700">+</text>
+  <text class="fix-t" x="1268" y="424">thêm: mistakes.md = học từ lỗi</text>
+  <circle class="fix" cx="1246" cy="456" r="10"/><text class="mono" x="1242" y="461" style="font-size:13px;fill:var(--bg);font-weight:700">✓</text>
+  <text class="fix-t" x="1268" y="462">CLAUDE.md — không phải AGENT.md</text>
+  <circle class="fix" cx="1246" cy="494" r="10"/><text class="mono" x="1242" y="499" style="font-size:13px;fill:var(--bg);font-weight:700">✓</text>
+  <text class="fix-t" x="1268" y="500">5 loại trang Wiki = 5 <tspan class="mono">type:</tspan></text>
+  <circle class="fix" cx="1246" cy="532" r="10"/><text class="mono" x="1242" y="537" style="font-size:13px;fill:var(--bg);font-weight:700">✓</text>
+  <text class="fix-t" x="1268" y="538">chat web không ghi file → cần agent local</text>
+</g>
+</svg>
+
+</template>
 <script>
 (function(){
   var slides=[].slice.call(document.querySelectorAll('.slide')),total=slides.length,cur=-1;
@@ -400,6 +455,19 @@ body.notes-open .notes{transform:none}
   document.addEventListener('touchend',function(e){if(tx===null)return;var dx=e.changedTouches[0].clientX-tx;tx=null;if(Math.abs(dx)>50)go(cur+(dx<0?1:-1));});
   setTimeout(function(){hints.classList.add('faded');},6000);
   fromHash();
+})();
+
+(function(){var tpl=document.getElementById('an-tpl');document.querySelectorAll('.an-host').forEach(function(h){h.appendChild(tpl.content.cloneNode(true));});})();
+
+(function(){
+  function t(on){document.body.classList.toggle('dock-open', on);}
+  document.querySelector('.dockbtn').addEventListener('click',function(){t(!document.body.classList.contains('dock-open'));});
+  document.querySelector('[data-dock-close]').addEventListener('click',function(){t(false);});
+  document.addEventListener('keydown',function(e){
+    if(e.target.isContentEditable||/^(INPUT|TEXTAREA)$/.test(e.target.tagName))return;
+    if(e.key==='l'||e.key==='L'){t(!document.body.classList.contains('dock-open'));}
+    else if(e.key==='Escape'){t(false);}
+  });
 })();
 </script>
 </body>
