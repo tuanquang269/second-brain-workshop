@@ -4,7 +4,8 @@ Workshop 240' dạy người không kỹ thuật dựng **bộ não thứ hai** 
 
 | Thứ | Ở đâu |
 |---|---|
-| Slide | https://tuanquang269.github.io/second-brain-workshop/slides/ |
+| Slide (6 slide mốc) | https://tuanquang269.github.io/second-brain-workshop/slides/ |
+| Phụ lục prompt (58 slide, chiếu khi cần dòng lệnh) | https://tuanquang269.github.io/second-brain-workshop/slides/full.html |
 | Bộ não mẫu (giải nén → mở bằng Obsidian, `cd` vào → `claude`) | [`starter-brain.zip`](starter-brain.zip) · nguồn `starter-brain/` |
 | Dữ liệu mẫu (2 CV · transcript họp · SOP thô · email đối thủ · ticket) | [`demo-data.zip`](demo-data.zip) · nguồn `demo-data/` |
 | Email chuẩn bị trước buổi | [`pre-work-email.md`](pre-work-email.md) |
